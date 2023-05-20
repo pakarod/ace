@@ -1,0 +1,6203 @@
+
+
+logging enable
+
+logging fastpath
+
+logging console 3
+
+logging timestamp
+
+logging trap 3
+
+logging history 5
+
+logging buffered 3
+
+logging persistent 3
+
+logging monitor 3
+
+logging device-id context-name
+
+logging host 156.17.18.129 udp/514
+
+
+
+
+
+
+
+login timeout 0
+
+
+
+crypto chaingroup TERENASSL
+
+cert intermediate-terenassl.crt
+
+crypto chaingroup DigiCertCA
+
+cert DigiCertCA.crt
+
+crypto chaingroup DigiCertCA-2020_2022
+
+cert DigiCertCA-2020_2022.crt
+
+crypto chaingroup GEANT_Wildcard_SSL
+
+cert GEANT_Wildcard_SSL.crt
+
+
+
+crypto authgroup SELS-PKI
+
+cert SELS-PKI-RootCA.pem
+
+cert SELS-PKI-CA-1.pem
+
+
+
+access-list ACL--DEV-OAUTHCERT line 100 extended permit ip any host 192.168.80.8
+
+access-list ACL--DEV-OAUTHCERT line 110 extended permit ip host 192.168.80.8 any
+
+access-list ACL-INSIDE line 5 extended permit icmp any any
+
+access-list ACL-INSIDE line 7 extended permit udp any any eq snmp
+
+access-list ACL-INSIDE line 10 extended permit ip any any
+
+access-list ACL-OUTSIDE line 5 extended permit icmp any any
+
+access-list ACL-OUTSIDE line 10 extended permit ip any any
+
+access-list ACL-api-v418-in line 10 extended permit ip 10.10.8.0 255.255.255.0 host 10.10.0.100
+
+access-list ACL-api-v418-in line 110 extended permit tcp 10.10.8.0 255.255.255.0 host 10.10.10.11 eq sqlnet
+
+access-list ACL-api-v418-in line 210 extended permit icmp 10.10.8.0 255.255.255.0 host 10.10.8.254 echo
+
+access-list ACL-api-v418-in line 220 extended permit icmp 10.10.8.0 255.255.255.0 host 10.10.10.11 echo
+
+access-list ACL-api-v418-in line 310 extended permit udp 10.10.8.0 255.255.255.0 host 156.17.18.10 eq domain
+
+access-list ACL-api-v418-in line 320 extended permit udp 10.10.8.0 255.255.255.0 host 156.17.18.11 eq domain
+
+access-list ACL-api-v418-in line 330 extended permit udp 10.10.8.0 255.255.255.0 host 156.17.5.2 eq domain
+
+access-list ACL-api-v418-in line 340 extended permit udp 10.10.8.0 255.255.255.0 host 156.17.18.1 eq ntp
+
+access-list ACL-api-v418-in line 999 extended deny ip any any
+
+access-list ACL-esb-v417-in line 10 extended permit ip 10.10.9.0 255.255.255.0 host 10.10.0.100
+
+access-list ACL-esb-v417-in line 110 extended permit tcp 10.10.9.0 255.255.255.0 host 10.10.9.180 eq 8080
+
+access-list ACL-esb-v417-in line 111 extended permit tcp 10.10.9.0 255.255.255.0 host 10.10.9.181 eq www
+
+access-list ACL-esb-v417-in line 120 extended permit tcp 10.10.9.0 255.255.255.0 host 10.10.10.11 eq sqlnet
+
+access-list ACL-esb-v417-in line 210 extended permit icmp 10.10.9.0 255.255.255.0 host 10.10.9.254 echo
+
+access-list ACL-esb-v417-in line 220 extended permit icmp 10.10.9.0 255.255.255.0 host 10.10.10.11 echo
+
+access-list ACL-esb-v417-in line 230 extended permit icmp 10.10.9.0 255.255.255.0 host 10.10.9.180 echo
+
+access-list ACL-esb-v417-in line 310 extended permit udp 10.10.9.0 255.255.255.0 host 156.17.18.10 eq domain
+
+access-list ACL-esb-v417-in line 320 extended permit udp 10.10.9.0 255.255.255.0 host 156.17.18.11 eq domain
+
+access-list ACL-esb-v417-in line 330 extended permit udp 10.10.9.0 255.255.255.0 host 156.17.5.2 eq domain
+
+access-list ACL-esb-v417-in line 340 extended permit udp 10.10.9.0 255.255.255.0 host 156.17.18.1 eq ntp
+
+access-list ACL-esb-v417-in line 999 extended deny ip any any
+
+access-list ACL-indeks-v422-in line 10 extended permit ip any any
+
+access-list ACL-indeks-v422-in line 110 extended permit tcp 10.10.5.0 255.255.255.0 host 10.10.5.170 eq 8080
+
+access-list ACL-indeks-v422-in line 120 extended permit tcp 10.10.5.0 255.255.255.0 host 10.10.5.190 eq 8280
+
+access-list ACL-indeks-v422-in line 210 extended permit icmp 10.10.5.0 255.255.255.0 host 10.10.5.254 echo
+
+access-list ACL-indeks-v422-in line 220 extended permit icmp 10.10.5.0 255.255.255.0 host 10.10.5.170 echo
+
+access-list ACL-indeks-v422-in line 230 extended permit icmp 10.10.5.0 255.255.255.0 host 10.10.5.190 echo
+
+access-list ACL-indeks-v422-in line 310 extended permit udp 10.10.5.0 255.255.255.0 host 156.17.18.10 eq domain
+
+
+
+access-list ACL-indeks-v422-in line 320 extended permit udp 10.10.5.0 255.255.255.0 host 156.17.18.11 eq domain
+
+access-list ACL-indeks-v422-in line 330 extended permit udp 10.10.5.0 255.255.255.0 host 156.17.5.2 eq domain
+
+access-list ACL-indeks-v422-in line 340 extended permit udp 10.10.5.0 255.255.255.0 host 156.17.18.1 eq ntp
+
+access-list ACL-indeks-v422-in line 999 extended deny ip any any
+
+access-list ACL-oauth-v419-in line 10 extended permit ip 10.10.7.0 255.255.255.0 host 10.10.0.100
+
+access-list ACL-oauth-v419-in line 110 extended permit tcp 10.10.7.0 255.255.255.0 host 10.10.10.11 eq sqlnet
+
+access-list ACL-oauth-v419-in line 210 extended permit icmp 10.10.7.0 255.255.255.0 host 10.10.7.254 echo
+
+access-list ACL-oauth-v419-in line 220 extended permit icmp 10.10.7.0 255.255.255.0 host 10.10.10.11 echo
+
+access-list ACL-oauth-v419-in line 310 extended permit udp 10.10.7.0 255.255.255.0 host 156.17.18.10 eq domain
+
+access-list ACL-oauth-v419-in line 320 extended permit udp 10.10.7.0 255.255.255.0 host 156.17.18.11 eq domain
+
+access-list ACL-oauth-v419-in line 330 extended permit udp 10.10.7.0 255.255.255.0 host 156.17.5.2 eq domain
+
+access-list ACL-oauth-v419-in line 340 extended permit udp 10.10.7.0 255.255.255.0 host 156.17.18.1 eq ntp
+
+access-list ACL-oauth-v419-in line 999 extended deny ip any any
+
+access-list ACL-v424-in line 110 extended permit icmp host 10.10.21.1 host 10.10.21.101 echo
+
+access-list ACL-v424-in line 120 extended permit icmp host 10.10.21.1 host 10.10.21.102 echo
+
+access-list ACL-v424-in line 130 extended permit icmp host 10.10.21.1 host 10.10.21.254 echo
+
+access-list ACL-v424-in line 140 extended permit icmp host 10.10.21.1 host 10.10.21.253 echo
+
+access-list ACL-v424-in line 150 extended permit icmp host 10.10.21.1 host 10.10.21.252 echo
+
+access-list ACL-v424-in line 160 extended permit icmp host 10.10.21.11 host 10.10.21.101 echo
+
+access-list ACL-v424-in line 170 extended permit icmp host 10.10.21.11 host 10.10.21.102 echo
+
+access-list ACL-v424-in line 180 extended permit icmp host 10.10.21.11 host 10.10.21.254 echo
+
+access-list ACL-v424-in line 190 extended permit icmp host 10.10.21.11 host 10.10.21.253 echo
+
+access-list ACL-v424-in line 200 extended permit icmp host 10.10.21.11 host 10.10.21.252 echo
+
+access-list ACL-v424-in line 300 extended permit tcp host 10.10.21.1 host 10.10.21.101 eq 8280
+
+access-list ACL-v424-in line 310 extended permit tcp host 10.10.21.1 host 10.10.21.102 eq www
+
+access-list ACL-v424-in line 400 extended permit ip 10.10.21.0 255.255.255.0 10.10.4.0 255.255.255.0
+
+access-list ACL-v424-in line 500 extended permit ip 10.10.21.0 255.255.255.0 10.10.21.0 255.255.255.0
+
+access-list ACL-v424-in line 800 extended deny ip 10.10.21.0 255.255.255.0 10.10.0.0 255.255.0.0
+
+access-list ACL-v424-in line 900 extended permit ip any any
+
+access-list ACL-v425-in line 110 extended permit ip 10.10.3.0 255.255.255.0 host 10.10.10.23
+
+access-list ACL-v425-in line 120 extended permit ip 10.10.3.0 255.255.255.0 host 10.10.10.11
+
+access-list ACL-v425-in line 700 extended permit ip 10.10.3.0 255.255.255.0 10.10.3.0 255.255.255.0
+
+access-list ACL-v425-in line 800 extended deny ip 10.10.3.0 255.255.255.0 10.10.0.0 255.255.0.0
+
+access-list ACL-v425-in line 900 extended permit ip any any
+
+
+
+
+
+probe http ESB
+
+port 8280
+
+interval 3
+
+faildetect 1
+
+passdetect interval 20
+
+passdetect count 1
+
+receive 2
+
+request method get url /services
+
+expect status 200 200
+
+probe http PROBE-DYDAKTYKA-80
+
+description AKZ (nginx)
+
+interval 10
+
+faildetect 2
+
+passdetect interval 10
+
+passdetect count 2
+
+receive 5
+
+expect status 200 200
+
+probe http PROBE-DYDAKTYKA-8080
+
+description AKZ (varnish cache)
+
+port 8080
+
+interval 10
+
+faildetect 2
+
+passdetect interval 10
+
+passdetect count 2
+
+receive 5
+
+expect status 200 200
+
+probe http PROBE-EDZIEKANAT-HTTP-7777
+
+port 7777
+
+interval 20
+
+faildetect 2
+
+passdetect interval 10
+
+
+
+passdetect count 2
+
+receive 15
+
+request method get url /java.html
+
+expect status 200 200
+
+probe icmp PROBE-ICMP
+
+interval 5
+
+faildetect 2
+
+passdetect interval 20
+
+passdetect count 1
+
+receive 2
+
+probe http PROBE-JSOS--web_index.php
+
+interval 20
+
+faildetect 2
+
+passdetect interval 10
+
+passdetect count 2
+
+receive 15
+
+request method get url /index.php
+
+expect status 200 200
+
+probe http PROBE-JSOS--web_ping_pong
+
+interval 10
+
+faildetect 2
+
+passdetect interval 20
+
+passdetect count 2
+
+receive 3
+
+request method get url /ping
+
+expect status 200 200
+
+probe http PROBE-JSOS-PORTAL
+
+port 7777
+
+interval 10
+
+faildetect 2
+
+passdetect interval 20
+
+passdetect count 1
+
+receive 3
+
+request method get url /java.html
+
+expect status 200 210
+
+probe tcp TCP-80
+
+interval 3
+
+faildetect 2
+
+passdetect interval 10
+
+passdetect count 2
+
+probe tcp TCP-8080
+
+port 8080
+
+interval 3
+
+faildetect 2
+
+passdetect interval 10
+
+passdetect count 2
+
+
+
+ip domain-name pwr.wroc.pl(http://pwr.wroc.pl)
+
+ip name-server 156.17.18.10
+
+ip name-server 156.17.5.2
+
+
+
+rserver host 10-10-10-30
+
+ip address 10.10.10.30
+
+probe PROBE-ICMP
+
+rserver host ANK-01
+
+ip address 10.10.4.201
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-02
+
+ip address 10.10.4.202
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-03
+
+ip address 10.10.4.203
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-04
+
+
+
+ip address 10.10.4.204
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-05
+
+ip address 10.10.4.205
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-06
+
+ip address 10.10.4.206
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-07
+
+ip address 10.10.4.207
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ANK-08
+
+ip address 10.10.4.208
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host API-01
+
+ip address 10.10.8.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host API-02
+
+ip address 10.10.8.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host API-03
+
+ip address 10.10.8.3
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host API-04
+
+ip address 10.10.8.4
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host API-PWR-01
+
+ip address 10.10.8.11
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-DEVJSOS
+
+ip address 10.10.4.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect APP-DEVJSOS-REDIRECT
+
+webhost-redirection http://devjsos.pwr.edu.pl/
+
+inservice
+
+rserver host APP-JSOS-01
+
+ip address 10.10.5.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-02
+
+ip address 10.10.5.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-03
+
+ip address 10.10.5.3
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-04
+
+ip address 10.10.5.4
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-05
+
+ip address 10.10.5.5
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-06
+
+
+
+ip address 10.10.5.6
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-07
+
+ip address 10.10.5.7
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-08
+
+ip address 10.10.5.8
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-09
+
+ip address 10.10.5.9
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-10
+
+ip address 10.10.5.10
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-11
+
+ip address 10.10.5.11
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-12
+
+ip address 10.10.5.12
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-13
+
+ip address 10.10.5.13
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-14
+
+ip address 10.10.5.14
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-15
+
+ip address 10.10.5.15
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host APP-JSOS-16
+
+ip address 10.10.5.16
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect APP-JSOS-REDIRECT
+
+webhost-redirection https://jsos.pwr.edu.pl/
+
+inservice
+
+rserver host AWARIA-1
+
+ip address 10.10.10.201
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host AWARIA-2
+
+ip address 10.10.10.202
+
+probe PROBE-ICMP
+
+rserver host AWARIA-3
+
+ip address 10.10.10.203
+
+probe PROBE-ICMP
+
+rserver host DB-edumod
+
+ip address 10.10.10.24
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DB-edutest
+
+ip address 10.10.10.22
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEV-ANKIETYZACJA
+
+ip address 10.10.4.40
+
+inservice
+
+
+
+rserver redirect DEV-ANKIETYZACJA-REDIRECT
+
+webhost-redirection https://ankietyzacja.pwr.wroc.pl/%p
+
+inservice
+
+rserver host DEV-API-PWR
+
+ip address 10.10.4.26
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEV-DYPLOMY-APP
+
+ip address 10.10.21.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEV-DYPLOMY-DB
+
+ip address 10.10.21.11
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEV-ESB
+
+ip address 10.10.4.31
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEV-OAUTHCERT
+
+ip address 192.168.80.8
+
+inservice
+
+rserver host DEV-WSDL
+
+ip address 10.10.4.10
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEVANK
+
+ip address 10.10.4.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect DEVANK-REDIRECT
+
+webhost-redirection https://devank.pwr.edu.pl/%p
+
+inservice
+
+rserver host DEVOAUTH
+
+ip address 10.10.4.41
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEVPOLON
+
+ip address 10.10.4.61
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEVZSA
+
+ip address 10.10.4.101
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DEVZSA-DB
+
+ip address 10.10.4.110
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect DEVZSA-REDIRECT
+
+webhost-redirection https://devzsa.pwr.edu.pl/%p
+
+inservice
+
+rserver host DYPLOM-APP
+
+ip address 10.10.21.31
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host DYPLOM-DB
+
+ip address 10.10.21.32
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect DYPLOM-EDU-REDIRECT
+
+webhost-redirection https://%h/%p 301
+
+inservice
+
+rserver redirect EDUKACJA-REDIRECT
+
+webhost-redirection https://edukacja.pwr.wroc.pl/%p
+
+inservice
+
+rserver host ESB-01
+
+
+
+ip address 10.10.9.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ESB-02
+
+ip address 10.10.9.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host EnterpriseManager
+
+ip address 10.10.0.11
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host IKZ-1
+
+ip address 10.10.11.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host IKZ-2
+
+ip address 10.10.11.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host JSOSMONITOR
+
+ip address 10.10.0.100
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect NEW-ANKIETYZACJA-HTTP-REDIRECT
+
+webhost-redirection https://ankietyzacja.pwr.edu.pl/%p
+
+inservice
+
+rserver host OAS-08
+
+description pchla2
+
+ip address 10.10.10.8
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-14
+
+description EDZIEKANAT, prime-power-650-slaby
+
+ip address 10.10.10.14
+
+inservice
+
+rserver host OAS-15
+
+description Nowa instalacja (22.06.2011) na T5220
+
+ip address 10.10.10.15
+
+probe PROBE-ICMP
+
+rserver host OAS-160
+
+ip address 10.10.10.160
+
+inservice
+
+rserver host OAS-40
+
+ip address 10.10.10.40
+
+probe PROBE-ICMP
+
+rserver host OAS-41
+
+ip address 10.10.10.41
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-42
+
+ip address 10.10.10.42
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-43
+
+ip address 10.10.10.43
+
+probe PROBE-ICMP
+
+rserver host OAS-44
+
+ip address 10.10.10.44
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-45
+
+ip address 10.10.10.45
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-46
+
+ip address 10.10.10.46
+
+probe PROBE-ICMP
+
+
+
+inservice
+
+rserver host OAS-47
+
+ip address 10.10.10.47
+
+probe PROBE-ICMP
+
+rserver host OAS-48
+
+ip address 10.10.10.48
+
+probe PROBE-ICMP
+
+rserver host OAS-49
+
+ip address 10.10.10.49
+
+inservice
+
+rserver host OAS-51
+
+ip address 10.10.10.51
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-52
+
+ip address 10.10.10.52
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-53
+
+ip address 10.10.10.53
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAS-54
+
+ip address 10.10.10.54
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH-01
+
+ip address 10.10.7.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH-02
+
+ip address 10.10.7.2
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH2020-01
+
+ip address 10.10.7.11
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH2020-02
+
+ip address 10.10.7.12
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH2020-03
+
+ip address 10.10.7.13
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host OAUTH2020-04
+
+ip address 10.10.7.14
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect PCHLA2-REDIRECT
+
+webhost-redirection https://testowy.pwr.wroc.pl/%p
+
+inservice
+
+rserver host POLON
+
+ip address 10.10.5.31
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host PROD-AWARIA
+
+ip address 10.10.5.201
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect PROTOKOLY-REDIRECT
+
+webhost-redirection https://protokoly.pwr.wroc.pl/%p
+
+inservice
+
+rserver host RAPORTY-01
+
+ip address 10.10.31.1
+
+probe PROBE-ICMP
+
+
+
+inservice
+
+rserver host RAPORTY-02
+
+ip address 10.10.32.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host RAPORTY-03
+
+ip address 10.10.33.1
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host RAPORTY-04
+
+ip address 10.10.34.1
+
+probe PROBE-ICMP
+
+rserver redirect REDIRECT-DEV-OAUTHCERT-EDU
+
+webhost-redirection https://dev-oauthcert.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-DEVESB-EDU
+
+webhost-redirection https://devesb.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-DEVOAUTH-EDU
+
+webhost-redirection https://devoauth.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-DEVWSDL-EDU
+
+webhost-redirection https://devwsdl.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-JSOS-EDU
+
+webhost-redirection https://jsos.pwr.edu.pl/
+
+inservice
+
+rserver redirect REDIRECT-JSOSMONITOR
+
+webhost-redirection https://jsosmonitor.pwr.wroc.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-OAUTH-EDU
+
+webhost-redirection https://oauth.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect REDIRECT-POLON-PWR
+
+webhost-redirection https://polon.pwr.wroc.pl/%p
+
+inservice
+
+rserver redirect REKRUTACJA-REDIRECT
+
+webhost-redirection https://rekrutacja.pwr.wroc.pl/%p
+
+inservice
+
+rserver redirect REKRUTACJA-REDIRECT-eksperyment
+
+webhost-redirection https://rekrutacja.pwr.wroc.pl/%p
+
+inservice
+
+rserver host STUDIUMTALENT
+
+ip address 10.10.5.71
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host SW160
+
+ip address 10.10.10.250
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host SZKOL-JSOS
+
+ip address 10.10.3.51
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect SZKOL-JSOS-REDIRECT
+
+webhost-redirection https://szkoljsos.pwr.edu.pl/%p
+
+inservice
+
+rserver host SZKOL-OAUTH
+
+ip address 10.10.3.71
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host SZKOL-OAUTH-CERT
+
+ip address 10.10.3.72
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect SZKOL-OAUTH-CERT-REDIRECT
+
+webhost-redirection https://szkoloauthcert.pwr.edu.pl/%p
+
+
+
+inservice
+
+rserver host SZKOL-OAUTH-CERT-optional
+
+ip address 10.10.3.73
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect SZKOL-OAUTH-CERT-optional-REDIRECT
+
+webhost-redirection https://szkoloauthcert2.pwr.edu.pl/%p
+
+inservice
+
+rserver redirect SZKOL-OAUTH-REDIRECT
+
+webhost-redirection https://szkoloauth.pwr.edu.pl/%p
+
+inservice
+
+rserver host SZKOL-OAUTH2020
+
+ip address 10.10.3.74
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host SZKOL-POLON
+
+description !!! DEV-ZSA !!!
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect TEST-EDUKACJA2-REDIRECT
+
+webhost-redirection https://edukacja2.pwr.wroc.pl/%p
+
+rserver host TIVOLI-RTEMS-JSOS
+
+ip address 10.10.10.230
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host WIFI-1
+
+ip address 10.10.10.204
+
+probe PROBE-ICMP
+
+rserver host WIFI-2
+
+ip address 10.10.10.205
+
+probe PROBE-ICMP
+
+rserver host WSDL
+
+ip address 10.10.5.110
+
+probe PROBE-ICMP
+
+inservice
+
+rserver host ZSA
+
+ip address 10.10.5.61
+
+probe PROBE-ICMP
+
+inservice
+
+rserver redirect ZSA-REDIRECT
+
+webhost-redirection https://zsa.pwr.edu.pl/%p
+
+inservice
+
+rserver host db-prod
+
+ip address 10.10.10.11
+
+inservice
+
+rserver host oas-41
+
+inservice
+
+rserver host oas-42
+
+inservice
+
+rserver host oas-43
+
+inservice
+
+rserver host oas-44
+
+inservice
+
+
+
+serverfarm host 10-10-10-30-SSH
+
+rserver APP-DEVJSOS 22
+
+inservice
+
+serverfarm host API-8080
+
+failaction reassign
+
+predictor leastconns slowstart 60
+
+rserver API-01 8080
+
+inservice
+
+rserver API-02 8080
+
+inservice
+
+rserver API-03 8080
+
+inservice
+
+rserver API-04 8080
+
+
+
+inservice
+
+serverfarm host API-PWR-80
+
+rserver API-PWR-01 80
+
+inservice
+
+serverfarm host APP-DEVJSOS-80
+
+retcode 100 599 check count
+
+rserver APP-DEVJSOS 80
+
+inservice
+
+serverfarm redirect APP-DEVJSOS-REDIRECT
+
+rserver APP-DEVJSOS-REDIRECT
+
+inservice
+
+serverfarm host APP-JSOS-443
+
+failaction reassign
+
+predictor leastconns slowstart 60
+
+rserver APP-JSOS-01 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-02 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-03 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-04 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-05 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-06 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-07 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-08 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-09 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-10 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-11 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-12 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-13 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-14 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-15 443
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-16 443
+
+conn-limit max 300 min 250
+
+inservice
+
+serverfarm host APP-JSOS-80
+
+failaction reassign
+
+predictor leastconns slowstart 60
+
+probe PROBE-JSOS--web_index.php
+
+probe PROBE-JSOS--web_ping_pong
+
+
+
+retcode 305 599 check count
+
+rserver APP-JSOS-01 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-02 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-03 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-04 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-05 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-06 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-07 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-08 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-09 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-10 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-11 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-12 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-13 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-14 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-15 80
+
+conn-limit max 300 min 250
+
+inservice
+
+rserver APP-JSOS-16 80
+
+conn-limit max 300 min 250
+
+inservice
+
+serverfarm host APP-JSOS-80-diagnostka
+
+rserver APP-JSOS-01 80
+
+inservice
+
+serverfarm redirect APP-JSOS-REDIRECT
+
+rserver APP-JSOS-REDIRECT
+
+inservice
+
+serverfarm host DB-edumod-1521
+
+rserver DB-edumod 1521
+
+inservice
+
+serverfarm host DB-edutest-1521
+
+rserver DB-edutest 1521
+
+inservice
+
+serverfarm host DEV-ANKIETYZACJA
+
+retcode 305 599 check count
+
+rserver ANK-01 80
+
+inservice
+
+rserver ANK-02 80
+
+rserver ANK-03 80
+
+
+
+rserver ANK-04 80
+
+rserver ANK-05 80
+
+rserver ANK-06 80
+
+rserver ANK-07 80
+
+rserver ANK-08 80
+
+serverfarm redirect DEV-ANKIETYZACJA-REDIRECT
+
+rserver DEV-ANKIETYZACJA-REDIRECT
+
+inservice
+
+serverfarm host DEV-API-PWR-22
+
+rserver DEV-API-PWR 22
+
+inservice
+
+serverfarm host DEV-DYPLOMY-APP-22
+
+rserver DEV-DYPLOMY-APP 22
+
+inservice
+
+serverfarm host DEV-DYPLOMY-APP-80
+
+rserver DEV-DYPLOMY-APP 80
+
+inservice
+
+serverfarm host DEV-DYPLOMY-APP-8080
+
+rserver DEV-DYPLOMY-APP 8080
+
+inservice
+
+serverfarm host DEV-DYPLOMY-DB-22
+
+rserver DEV-DYPLOMY-DB 22
+
+inservice
+
+serverfarm host DEV-ESB-8280
+
+rserver DEV-ESB 8280
+
+inservice
+
+serverfarm host DEV-OAUTHCERT-8080
+
+rserver DEV-OAUTHCERT 8080
+
+inservice
+
+serverfarm host DEV-WSDL-80
+
+rserver DEV-WSDL 80
+
+inservice
+
+serverfarm host DEVANK-22
+
+rserver DEVANK 22
+
+inservice
+
+serverfarm host DEVANK-80
+
+retcode 100 599 check count
+
+rserver DEVANK 80
+
+inservice
+
+serverfarm redirect DEVANK-REDIRECT
+
+rserver DEVANK-REDIRECT
+
+inservice
+
+serverfarm host DEVOAUTH-8080
+
+retcode 100 599 check count
+
+rserver DEVOAUTH 8080
+
+inservice
+
+serverfarm host DEVPOLON-22
+
+rserver DEVPOLON 22
+
+inservice
+
+serverfarm host DEVPOLON-80
+
+retcode 100 599 check count
+
+rserver DEVPOLON 80
+
+inservice
+
+serverfarm host DEVZSA-22
+
+rserver DEVZSA 22
+
+inservice
+
+serverfarm host DEVZSA-80
+
+retcode 100 599 check count
+
+rserver DEVZSA 80
+
+inservice
+
+serverfarm host DEVZSA-DB-1521
+
+rserver DEVZSA-DB 1521
+
+inservice
+
+serverfarm redirect DEVZSA-REDIRECT
+
+rserver DEVZSA-REDIRECT
+
+inservice
+
+serverfarm host DYPLOM-APP-22
+
+
+
+rserver DYPLOM-APP 22
+
+inservice
+
+serverfarm host DYPLOM-APP-80
+
+rserver DYPLOM-APP 80
+
+inservice
+
+serverfarm host DYPLOM-APP-8080
+
+rserver DYPLOM-APP 8080
+
+inservice
+
+serverfarm host DYPLOM-DB-22
+
+rserver DYPLOM-DB 22
+
+inservice
+
+serverfarm redirect DYPLOM-EDU-REDIRECT
+
+rserver DYPLOM-EDU-REDIRECT
+
+inservice
+
+serverfarm host EDZIEKANAT-EDUJNLP
+
+predictor leastconns
+
+probe PROBE-EDZIEKANAT-HTTP-7777
+
+rserver OAS-51 7777
+
+inservice
+
+rserver OAS-52 7777
+
+inservice
+
+rserver OAS-53 7777
+
+inservice
+
+rserver OAS-54 7777
+
+inservice
+
+serverfarm host EDZIEKANAT-PRZELOTKA
+
+predictor leastconns
+
+rserver OAS-51 12410
+
+inservice
+
+rserver OAS-52 12410
+
+inservice
+
+rserver OAS-53 12410
+
+inservice
+
+rserver OAS-54 12410
+
+inservice
+
+serverfarm host ESB-8280
+
+probe ESB
+
+rserver ESB-01 8280
+
+inservice
+
+rserver ESB-02 8280
+
+inservice
+
+serverfarm host EnterpriseManager-4904
+
+rserver EnterpriseManager 4904
+
+inservice
+
+serverfarm host FARMA-API-8080
+
+rserver API-01 8080
+
+inservice
+
+rserver API-02 8080
+
+inservice
+
+serverfarm host FARMA-AWARIA-PORTAL
+
+failaction reassign
+
+predictor leastconns
+
+retcode 100 599 check count
+
+rserver AWARIA-1 80
+
+inservice
+
+rserver AWARIA-2 80
+
+inservice
+
+rserver AWARIA-3 80
+
+inservice
+
+serverfarm host FARMA-DYDAKTYKA
+
+description AKZ
+
+failaction reassign
+
+predictor leastconns
+
+retcode 100 599 check count
+
+rserver IKZ-1 80
+
+probe PROBE-DYDAKTYKA-80
+
+inservice standby
+
+
+
+rserver IKZ-1 8080
+
+backup-rserver IKZ-1 80
+
+probe PROBE-DYDAKTYKA-8080
+
+inservice
+
+rserver IKZ-2 80
+
+probe PROBE-DYDAKTYKA-80
+
+inservice standby
+
+rserver IKZ-2 8080
+
+backup-rserver IKZ-2 80
+
+probe PROBE-DYDAKTYKA-8080
+
+inservice
+
+serverfarm redirect FARMA-EDUKACJA-REDIRECT
+
+rserver EDUKACJA-REDIRECT
+
+inservice
+
+serverfarm host FARMA-EDZIEKANAT-EDUJNLP-KLIENT-GRUBY
+
+rserver OAS-14 7777
+
+inservice
+
+serverfarm host FARMA-EDZIEKANAT-KLIENT-GRUBY
+
+rserver OAS-14 12410
+
+inservice
+
+serverfarm host FARMA-ESB-8280
+
+rserver ESB-01 8280
+
+inservice
+
+rserver ESB-02 8280
+
+inservice
+
+serverfarm host FARMA-OAS-08-12420
+
+rserver OAS-08 12420
+
+inservice
+
+serverfarm host FARMA-OAS-08-12430
+
+rserver OAS-08 12430
+
+inservice
+
+serverfarm host FARMA-OAS-08-12440
+
+rserver OAS-08 12440
+
+inservice
+
+serverfarm host FARMA-OAS-08-12450
+
+rserver OAS-08 12450
+
+inservice
+
+serverfarm host FARMA-OAS-08-7777
+
+rserver OAS-08 7777
+
+inservice
+
+serverfarm host FARMA-OAS-15-7777
+
+rserver OAS-15 7777
+
+inservice
+
+serverfarm host FARMA-OAS-40-PORTAL
+
+rserver OAS-40 7777
+
+inservice
+
+serverfarm host FARMA-OAS-PORTAL-15
+
+failaction purge
+
+predictor leastconns
+
+retcode 100 599 check count
+
+rserver OAS-15 7777
+
+inservice
+
+serverfarm host FARMA-OAS-PORTAL-45-46
+
+failaction purge
+
+probe PROBE-JSOS-PORTAL
+
+retcode 100 599 check count
+
+rserver OAS-45 7777
+
+inservice
+
+rserver OAS-46 7777
+
+inservice
+
+serverfarm host FARMA-OAS-PORTAL-PWR
+
+failaction reassign
+
+predictor leastconns slowstart 60
+
+retcode 100 599 check count
+
+rserver OAS-41 7777
+
+inservice
+
+rserver OAS-42 7777
+
+
+
+inservice
+
+rserver OAS-43 7777
+
+inservice
+
+rserver OAS-44 7777
+
+inservice
+
+rserver OAS-45 7777
+
+inservice
+
+rserver OAS-46 7777
+
+inservice
+
+rserver OAS-47 7777
+
+inservice
+
+rserver OAS-48 7777
+
+inservice
+
+serverfarm host FARMA-OAS-PORTAL-SPOZA-PWR
+
+failaction purge
+
+retcode 500 500 check count
+
+retcode 501 501 check count
+
+rserver OAS-41 7777
+
+inservice
+
+rserver OAS-42 7777
+
+inservice
+
+rserver OAS-43 7777
+
+inservice
+
+rserver OAS-44 7777
+
+inservice
+
+rserver OAS-45 7777
+
+inservice
+
+rserver OAS-46 7777
+
+inservice
+
+rserver OAS-47 7777
+
+inservice
+
+rserver OAS-48 7777
+
+inservice
+
+serverfarm host FARMA-OAS-PORTAL-eksperyment
+
+failaction purge
+
+retcode 100 599 check count
+
+rserver OAS-49 7777
+
+inservice
+
+serverfarm host FARMA-OAS-TESTY-PORTAL
+
+failaction reassign
+
+retcode 100 599 check count
+
+serverfarm host FARMA-OAUTH-8080
+
+failaction reassign
+
+probe TCP-8080
+
+retcode 100 599 check count
+
+rserver OAUTH-01 8080
+
+inservice
+
+rserver OAUTH-02 8080
+
+inservice
+
+serverfarm redirect FARMA-PCHLA2-REDIRECT
+
+rserver PCHLA2-REDIRECT
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-DEV-OAUTH-EDU
+
+rserver REDIRECT-DEVOAUTH-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-DEV-OAUTHCERT-EDU
+
+rserver REDIRECT-DEV-OAUTHCERT-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-DEVESB-EDU
+
+rserver REDIRECT-DEVESB-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-DEVOAUTH-EDU
+
+rserver REDIRECT-DEVOAUTH-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-DEVWSDL-EDU
+
+rserver REDIRECT-DEVWSDL-EDU
+
+inservice
+
+
+
+serverfarm redirect FARMA-REDIRECT-JSOS-EDU
+
+rserver REDIRECT-JSOS-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-JSOSMONITOR
+
+rserver REDIRECT-JSOSMONITOR
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-OAUTH-EDU
+
+rserver REDIRECT-OAUTH-EDU
+
+inservice
+
+serverfarm redirect FARMA-REDIRECT-POLON-PWR
+
+rserver REDIRECT-POLON-PWR
+
+inservice
+
+serverfarm redirect FARMA-REKRUTACJA-REDIRECT
+
+rserver REKRUTACJA-REDIRECT
+
+inservice
+
+serverfarm redirect FARMA-REKRUTACJA-REDIRECT-eksperyment
+
+rserver REKRUTACJA-REDIRECT-eksperyment
+
+inservice
+
+serverfarm host FARMA-WIFI-PORTAL
+
+failaction reassign
+
+predictor leastconns
+
+retcode 100 599 check count
+
+rserver WIFI-1 80
+
+inservice
+
+rserver WIFI-2 80
+
+inservice
+
+serverfarm host JSOSMONITOR-10051
+
+rserver JSOSMONITOR 10051
+
+inservice
+
+serverfarm host JSOSMONITOR-22
+
+rserver JSOSMONITOR 22
+
+inservice
+
+serverfarm host JSOSMONITOR-5432
+
+rserver JSOSMONITOR 5432
+
+inservice
+
+serverfarm host JSOSMONITOR-80
+
+rserver JSOSMONITOR 80
+
+inservice
+
+serverfarm redirect NEW-ANKIETYZACJA-REDIRECT
+
+rserver NEW-ANKIETYZACJA-HTTP-REDIRECT
+
+inservice
+
+serverfarm host OAS-160-22
+
+rserver OAS-160 22
+
+inservice
+
+serverfarm host OAUTH-443
+
+failaction reassign
+
+probe TCP-8080
+
+retcode 100 599 check count
+
+rserver OAUTH-01 443
+
+rserver OAUTH-02 443
+
+rserver OAUTH2020-01 443
+
+inservice
+
+rserver OAUTH2020-02 443
+
+inservice
+
+rserver OAUTH2020-03 443
+
+inservice
+
+rserver OAUTH2020-04 443
+
+inservice
+
+serverfarm host OAUTH-443-nowy
+
+failaction reassign
+
+probe TCP-8080
+
+retcode 100 599 check count
+
+rserver OAUTH2020-01 443
+
+inservice
+
+rserver OAUTH2020-02 443
+
+inservice
+
+rserver OAUTH2020-03 443
+
+
+
+inservice
+
+rserver OAUTH2020-04 443
+
+inservice
+
+serverfarm host OAUTH-8080
+
+failaction reassign
+
+probe TCP-8080
+
+retcode 100 599 check count
+
+rserver OAUTH-01 8080
+
+rserver OAUTH-02 8080
+
+rserver OAUTH2020-01 8080
+
+inservice
+
+rserver OAUTH2020-02 8080
+
+inservice
+
+rserver OAUTH2020-03 8080
+
+inservice
+
+rserver OAUTH2020-04 8080
+
+inservice
+
+serverfarm host POLON-22
+
+rserver POLON 22
+
+inservice
+
+serverfarm host POLON-80
+
+retcode 100 599 check count
+
+rserver POLON 80
+
+inservice
+
+serverfarm host PROD-AWARIA
+
+failaction reassign
+
+predictor leastconns
+
+retcode 100 599 check count
+
+rserver PROD-AWARIA 80
+
+inservice
+
+serverfarm host RAPORTY-7777
+
+failaction reassign
+
+rserver RAPORTY-01 7777
+
+inservice
+
+rserver RAPORTY-02 7777
+
+inservice
+
+rserver RAPORTY-03 7777
+
+inservice
+
+rserver RAPORTY-04 7777
+
+inservice
+
+serverfarm host STUDIUMTALENT-HTTP
+
+rserver STUDIUMTALENT 80
+
+inservice
+
+serverfarm host STUDIUMTALENT-HTTPS
+
+rserver STUDIUMTALENT 443
+
+inservice
+
+serverfarm host SW160-5432
+
+rserver SW160 5432
+
+inservice
+
+serverfarm host SZKOL-JSOS-22
+
+rserver SZKOL-JSOS 22
+
+inservice
+
+serverfarm host SZKOL-JSOS-80
+
+rserver SZKOL-JSOS 80
+
+inservice
+
+serverfarm redirect SZKOL-JSOS-REDIRECT
+
+rserver SZKOL-JSOS-REDIRECT
+
+inservice
+
+serverfarm host SZKOL-OAUTH-8080
+
+rserver SZKOL-OAUTH 8080
+
+backup-rserver SZKOL-OAUTH2020 8080
+
+probe TCP-8080
+
+inservice
+
+rserver SZKOL-OAUTH2020 8080
+
+probe TCP-8080
+
+inservice standby
+
+serverfarm host SZKOL-OAUTH-CERT-8080
+
+
+
+rserver SZKOL-OAUTH-CERT 8080
+
+inservice
+
+serverfarm redirect SZKOL-OAUTH-CERT-REDIRECT
+
+rserver SZKOL-OAUTH-CERT-REDIRECT
+
+inservice
+
+serverfarm host SZKOL-OAUTH-CERT-optional-443
+
+rserver SZKOL-OAUTH-CERT-optional 443
+
+inservice
+
+serverfarm redirect SZKOL-OAUTH-CERT-optional-REDIRECT
+
+rserver SZKOL-OAUTH-CERT-optional-REDIRECT
+
+inservice
+
+serverfarm redirect SZKOL-OAUTH-REDIRECT
+
+rserver SZKOL-OAUTH-REDIRECT
+
+inservice
+
+serverfarm host SZKOL-OAUTH2020-8080
+
+probe TCP-8080
+
+rserver SZKOL-OAUTH2020 8080
+
+inservice
+
+serverfarm redirect TEST-EDUKACJA2-REDIRECT
+
+rserver TEST-EDUKACJA2-REDIRECT
+
+inservice
+
+serverfarm host TESTY-FARMA-OAS-PORTAL
+
+rserver OAS-41 7777
+
+inservice
+
+rserver OAS-42 7777
+
+inservice
+
+rserver OAS-43 7777
+
+rserver OAS-44 7777
+
+rserver OAS-45 7777
+
+rserver OAS-46 7777
+
+serverfarm host TIVOLI-RTEMS-JSOS-22
+
+rserver TIVOLI-RTEMS-JSOS 22
+
+inservice
+
+serverfarm host WSDL-80
+
+rserver WSDL 80
+
+inservice
+
+serverfarm host ZSA-22
+
+rserver ZSA 22
+
+inservice
+
+serverfarm host ZSA-80
+
+rserver ZSA 80
+
+inservice
+
+serverfarm redirect ZSA-REDIRECT
+
+rserver ZSA-REDIRECT
+
+inservice
+
+serverfarm host db-avamar
+
+rserver db-prod
+
+inservice
+
+serverfarm host klikacz
+
+rserver AWARIA-1 80
+
+inservice
+
+serverfarm host tmp-EDZIEKANAT-EDUJNLP
+
+predictor leastconns
+
+rserver OAS-53 7777
+
+inservice
+
+rserver OAS-54 7777
+
+inservice
+
+serverfarm host tmp-EDZIEKANAT-PRZELOTKA
+
+predictor leastconns
+
+rserver OAS-53 12410
+
+inservice
+
+rserver OAS-54 12410
+
+inservice
+
+
+
+parameter-map type http PARAMETER-MAP-HTTP
+
+server-conn reuse
+
+persistence-rebalance
+
+
+
+parameter-map type ssl SSL-PARAMETER-MAP
+
+cipher RSA_WITH_3DES_EDE_CBC_SHA priority 2
+
+cipher RSA_WITH_AES_128_CBC_SHA priority 4
+
+cipher RSA_WITH_AES_256_CBC_SHA priority 8
+
+cipher RSA_WITH_AES_128_CBC_SHA256 priority 6
+
+version Upto_TLS1_2
+
+
+
+sticky http-cookie JSESSIONID STICKY-GROUP-FARMA-OAS-PORTAL-PWR
+
+serverfarm FARMA-OAS-PORTAL-PWR backup FARMA-AWARIA-PORTAL
+
+timeout 20
+
+sticky http-cookie JSESSIONID STICKY-GROUP-FARMA-OAS-PORTAL-SPOZA-PWR
+
+serverfarm FARMA-OAS-PORTAL-SPOZA-PWR backup FARMA-AWARIA-PORTAL
+
+timeout 20
+
+sticky http-cookie JSESSIONID TESTY-STICKY-GROUP-FARMA-OAS-PORTAL
+
+serverfarm TESTY-FARMA-OAS-PORTAL
+
+timeout 20
+
+sticky http-cookie PWR-ID STICKY-FARMA-APP-JSOS-80
+
+cookie insert browser-expire
+
+serverfarm APP-JSOS-80
+
+timeout 20
+
+sticky http-cookie JSESSIONID STICKY-GROUP-FARMA-OAS-PORTAL-45-46
+
+serverfarm FARMA-OAS-PORTAL-45-46 backup FARMA-AWARIA-PORTAL
+
+timeout 20
+
+sticky ip-netmask 255.255.255.255 address source EDZIEKANAT-EDUJNLP
+
+serverfarm EDZIEKANAT-EDUJNLP
+
+replicate sticky
+
+sticky ip-netmask 255.255.255.255 address source EDZIEKANAT-PRZELOTKA
+
+serverfarm EDZIEKANAT-PRZELOTKA
+
+replicate sticky
+
+sticky ip-netmask 255.255.255.255 address source tmp-EDZIEKANAT-EDUJNLP
+
+serverfarm tmp-EDZIEKANAT-EDUJNLP
+
+replicate sticky
+
+sticky ip-netmask 255.255.255.255 address source tmp-EDZIEKANAT-PRZELOTKA
+
+serverfarm tmp-EDZIEKANAT-PRZELOTKA
+
+replicate sticky
+
+sticky http-cookie ankietyzacja STICKY-ANKIETYZACJA
+
+cookie insert browser-expire
+
+serverfarm DEV-ANKIETYZACJA
+
+sticky ip-netmask 255.255.255.255 address source STICKY-net-OAUTH2020-443
+
+serverfarm OAUTH-443-nowy
+
+timeout 15
+
+timeout activeconns
+
+replicate sticky
+
+
+
+action-list type modify http INSERT-CERT-HEADER
+
+ssl header-insert session Id
+
+ssl header-insert session Verify-Result
+
+ssl header-insert client-cert Not-After
+
+ssl header-insert client-cert Not-Before
+
+ssl header-insert client-cert Subject
+
+ssl header-insert client-cert Subject-CN
+
+ssl header-insert client-cert Subject-Key-Id
+
+
+
+ssl-proxy service SSL-SERVICE-CERTYFIKAT-GWIAZDKA-PWR-EDU-PL
+
+key gwiazdka_pwr_edu_pl--2022_06_18.key
+
+cert gwiazdka_pwr_edu_pl--2022_06_18.crt
+
+chaingroup GEANT_Wildcard_SSL
+
+authgroup SELS-PKI
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service SSL-SERVICE-GWIAZDKA-PWR
+
+key gwiazdka_pwr_wroc_pl-20180618.key
+
+cert gwiazdka_pwr_wroc_pl-20180618.crt
+
+chaingroup TERENASSL
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service SSL-SERVICE-GWIAZDKA-PWR-EDU-PL
+
+key gwiazdka_pwr_edu_pl--2022_06_18.key
+
+cert gwiazdka_pwr_edu_pl--2022_06_18.crt
+
+
+
+chaingroup GEANT_Wildcard_SSL
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service SSL-SERVICE-GWIAZDKA-PWR-WROC-PL
+
+key gwiazdka_pwr_wroc_pl--2022_06_18.key
+
+cert gwiazdka_pwr_wroc_pl--2022_06_18.crt
+
+chaingroup GEANT_Wildcard_SSL
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service SSL-gwiazdka_edu-homessl
+
+key gwiazdka_pwr_edu_pl--2022_06_18.key
+
+cert gwiazdka_pwr_edu_pl--2022_06_18.crt
+
+chaingroup GEANT_Wildcard_SSL
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service SSL-gwiazdka_wroc-homessl
+
+key gwiazdka_pwr_wroc_pl--2022_06_18.key
+
+cert gwiazdka_pwr_wroc_pl--2022_06_18.crt
+
+chaingroup GEANT_Wildcard_SSL
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service edukacja.pwr.wroc.pl(http://edukacja.pwr.wroc.pl)
+
+key edukacja_pwr_wroc_pl.key
+
+cert edukacja_pwr_wroc_pl.crt
+
+chaingroup DigiCertCA
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service edukacja.pwr.wroc.pl-2020_2022
+
+key edukacja_pwr_wroc_pl-2020_2022.key
+
+cert edukacja_pwr_wroc_pl-2020_2022.crt
+
+chaingroup DigiCertCA-2020_2022
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service jsos.pwr.edu.pl(http://jsos.pwr.edu.pl)
+
+key jsos_pwr_edu_pl.key
+
+cert jsos_pwr_edu_pl.crt
+
+chaingroup DigiCertCA
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service oauth.pwr.edu.pl(http://oauth.pwr.edu.pl)
+
+chaingroup DigiCertCA
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+ssl-proxy service rekrutacja.pwr.wroc.pl-2020_2022
+
+key rekrutacja_pwr_wroc_pl-2020_2022.key
+
+cert rekrutacja_pwr_wroc_pl-2020_2022.crt
+
+chaingroup DigiCertCA-2020_2022
+
+ssl advanced-options SSL-PARAMETER-MAP
+
+
+
+class-map type http loadbalance match-any AVAMAR
+
+2 match source-address 156.17.66.200 255.255.255.255
+
+3 match source-address 156.17.66.193 255.255.255.255
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-EnterpriseManager
+
+2 match source-address 10.10.0.11 255.255.255.255
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-OAUTH2020-01
+
+2 match source-address 10.10.7.11 255.255.255.255
+
+3 match source-address 10.10.7.12 255.255.255.255
+
+4 match source-address 10.10.7.13 255.255.255.255
+
+5 match source-address 10.10.7.14 255.255.255.255
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-SELS
+
+2 match destination-address 10.122.0.0 255.255.255.0
+
+3 match destination-address 10.10.254.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan421
+
+2 match source-address 10.10.0.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan423
+
+2 match source-address 10.10.4.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan424
+
+2 match source-address 10.10.21.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan425
+
+2 match source-address 10.10.3.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan989
+
+2 match source-address 10.10.11.0 255.255.255.0
+
+class-map match-any CLASS-MAP-PRAWDZIWE-SERWERY-vlan999
+
+2 match source-address 10.10.10.0 255.255.255.0
+
+class-map type http loadbalance match-any CLASS-MAP-RUCH-Z-IP-PWR
+
+
+
+2 match source-address 156.17.2.0 255.255.255.0
+
+3 match source-address 156.17.3.0 255.255.255.0
+
+4 match source-address 156.17.7.0 255.255.255.0
+
+5 match source-address 156.17.8.0 255.255.255.0
+
+6 match source-address 156.17.9.0 255.255.255.0
+
+7 match source-address 156.17.10.0 255.255.255.0
+
+8 match source-address 156.17.12.0 255.255.255.0
+
+9 match source-address 156.17.13.0 255.255.255.0
+
+10 match source-address 156.17.14.0 255.255.255.0
+
+11 match source-address 156.17.15.0 255.255.255.0
+
+12 match source-address 156.17.16.0 255.255.255.0
+
+13 match source-address 156.17.18.0 255.255.255.0
+
+14 match source-address 156.17.25.0 255.255.255.0
+
+15 match source-address 156.17.26.0 255.255.255.0
+
+16 match source-address 156.17.28.0 255.255.255.0
+
+17 match source-address 156.17.29.0 255.255.255.0
+
+18 match source-address 156.17.30.0 255.255.255.0
+
+19 match source-address 156.17.31.0 255.255.255.0
+
+20 match source-address 156.17.32.0 255.255.255.0
+
+21 match source-address 156.17.34.0 255.255.255.0
+
+22 match source-address 156.17.35.0 255.255.255.0
+
+23 match source-address 156.17.36.0 255.255.255.0
+
+24 match source-address 156.17.38.0 255.255.255.0
+
+25 match source-address 156.17.39.0 255.255.255.0
+
+26 match source-address 156.17.40.0 255.255.255.0
+
+27 match source-address 156.17.41.0 255.255.255.0
+
+28 match source-address 156.17.42.0 255.255.255.0
+
+29 match source-address 156.17.43.0 255.255.255.0
+
+30 match source-address 156.17.44.0 255.255.255.0
+
+31 match source-address 156.17.45.0 255.255.255.0
+
+32 match source-address 156.17.46.0 255.255.255.0
+
+33 match source-address 156.17.67.0 255.255.255.0
+
+34 match source-address 156.17.68.0 255.255.255.0
+
+35 match source-address 156.17.69.0 255.255.255.0
+
+36 match source-address 156.17.70.0 255.255.255.0
+
+37 match source-address 156.17.71.0 255.255.255.0
+
+38 match source-address 156.17.72.0 255.255.255.0
+
+39 match source-address 156.17.73.0 255.255.255.0
+
+40 match source-address 156.17.74.0 255.255.255.0
+
+41 match source-address 156.17.75.0 255.255.255.0
+
+42 match source-address 156.17.76.0 255.255.255.0
+
+43 match source-address 156.17.77.0 255.255.255.0
+
+44 match source-address 156.17.78.0 255.255.255.0
+
+45 match source-address 156.17.79.0 255.255.255.0
+
+46 match source-address 156.17.128.0 255.255.248.0
+
+47 match source-address 156.17.136.0 255.255.255.0
+
+49 match source-address 156.17.6.0 255.255.255.0
+
+50 match source-address 156.17.66.0 255.255.255.0
+
+51 match source-address 10.0.0.0 255.0.0.0
+
+52 match source-address 172.16.0.0 255.240.0.0
+
+53 match source-address 156.17.24.0 255.255.255.0
+
+54 match source-address 156.17.64.0 255.255.255.0
+
+55 match source-address 156.17.65.0 255.255.255.0
+
+56 match source-address 156.17.33.0 255.255.255.0
+
+57 match source-address 156.17.48.0 255.255.255.0
+
+58 match source-address 156.17.140.0 255.255.252.0
+
+59 match source-address 156.17.144.0 255.255.252.0
+
+class-map match-any CLASS-MAP-VIP-DYDAKTYKA-HTTP
+
+2 match virtual-address 156.17.28.248 tcp eq www
+
+class-map match-any CLASS-MAP-VIP-EDUKACJA-HTTP
+
+2 match virtual-address 156.17.28.242 tcp eq www
+
+class-map match-any CLASS-MAP-VIP-EDUKACJA-HTTPS
+
+2 match virtual-address 156.17.28.242 tcp eq https
+
+class-map match-any CLASS-MAP-VIP-EDZIEKANAT-HTTP
+
+2 match virtual-address 156.17.28.245 tcp eq www
+
+class-map match-any CLASS-MAP-VIP-EDZIEKANAT-JAVA
+
+2 match virtual-address 156.17.28.245 tcp eq 12410
+
+
+
+class-map match-any CLASS-MAP-VIP-OAS-11-8011
+
+2 match virtual-address 156.17.28.242 tcp eq 8011
+
+class-map match-any CLASS-MAP-VIP-OAS-12-8012
+
+2 match virtual-address 156.17.28.242 tcp eq 8012
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-12420
+
+2 match virtual-address 156.17.28.239 tcp eq 12420
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-12430
+
+2 match virtual-address 156.17.28.239 tcp eq 12430
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-12440
+
+2 match virtual-address 156.17.28.239 tcp eq 12440
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-12450
+
+2 match virtual-address 156.17.28.239 tcp eq 12450
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-HTTP
+
+2 match virtual-address 156.17.28.239 tcp eq www
+
+class-map match-any CLASS-MAP-VIP-PCHLA2-HTTPS
+
+2 match virtual-address 156.17.28.239 tcp eq https
+
+class-map match-any CLASS-MAP-VIP-REKRUTACJA-HTTP
+
+2 match virtual-address 156.17.28.243 tcp eq www
+
+class-map match-any CLASS-MAP-VIP-REKRUTACJA-HTTPS
+
+2 match virtual-address 156.17.28.243 tcp eq https
+
+class-map type http loadbalance match-any CLASS-WIFI
+
+2 match source-address 156.17.18.42 255.255.255.255
+
+3 match source-address 156.17.33.118 255.255.255.255
+
+class-map type management match-any DOSTEP-ADMINISTRACYJNY-INSIDE
+
+2 match protocol icmp any
+
+3 match protocol ssh source-address 10.10.10.219 255.255.255.255
+
+4 match protocol snmp source-address 10.10.10.219 255.255.255.255
+
+5 match protocol snmp source-address 10.10.0.100 255.255.255.255
+
+6 match protocol ssh source-address 10.10.0.100 255.255.255.255
+
+class-map type management match-any DOSTEP-ADMINISTRACYJNY-OUTSIDE
+
+2 match protocol icmp any
+
+3 match protocol ssh source-address 156.17.66.224 255.255.255.224
+
+4 match protocol ssh source-address 156.17.73.25 255.255.255.255
+
+5 match protocol snmp source-address 156.17.66.224 255.255.255.224
+
+6 match protocol snmp source-address 156.17.73.25 255.255.255.255
+
+7 match protocol snmp source-address 156.17.28.226 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-DO-10-10-10-30-SSH
+
+2 match source-address 156.17.66.81 255.255.255.255
+
+3 match source-address 156.17.66.224 255.255.255.224
+
+class-map type http loadbalance match-any DOSTEP-DO-DEV-DYPLOMY
+
+8 match source-address 10.100.4.0 255.255.255.0
+
+10 match source-address 10.255.1.0 255.255.255.0
+
+14 match source-address 10.60.2.0 255.255.255.0
+
+15 match source-address 10.60.5.0 255.255.255.0
+
+17 match source-address 156.17.73.25 255.255.255.255
+
+18 match source-address 156.17.15.125 255.255.255.255
+
+19 match source-address 156.17.71.243 255.255.255.255
+
+20 match source-address 156.17.66.224 255.255.255.224
+
+21 match source-address 156.17.71.240 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+2 match source-address 156.17.66.224 255.255.255.224
+
+3 match source-address 156.17.66.81 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-DII-elearning
+
+2 match source-address 10.100.8.0 255.255.255.0
+
+3 match source-address 156.17.70.218 255.255.255.255
+
+4 match source-address 156.17.70.219 255.255.255.255
+
+5 match source-address 10.250.0.136 255.255.255.255
+
+6 match source-address 10.104.200.10 255.255.255.255
+
+7 match source-address 10.100.0.0 255.255.255.0
+
+8 match source-address 10.255.9.128 255.255.255.240
+
+9 match source-address 10.104.200.11 255.255.255.255
+
+11 match source-address 10.141.1.1 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-PG--Politechnika-Gdanska
+
+2 match source-address 153.19.62.0 255.255.255.0
+
+3 match source-address 10.241.2.0 255.255.255.0
+
+class-map type http loadbalance match-any DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+2 match source-address 156.17.79.21 255.255.255.255
+
+
+
+3 match source-address 156.17.79.16 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-SIECI-PKI
+
+2 match source-address 10.130.5.11 255.255.255.255
+
+3 match source-address 10.130.5.12 255.255.255.255
+
+4 match source-address 156.17.66.227 255.255.255.255
+
+5 match source-address 10.255.7.0 255.255.255.0
+
+class-map type http loadbalance match-any DOSTEP-Z-SIECI-TESTOWYCH
+
+5 match source-address 156.17.8.64 255.255.255.224
+
+7 match source-address 156.17.73.222 255.255.255.255
+
+8 match source-address 10.100.4.0 255.255.255.0
+
+9 match source-address 156.17.18.129 255.255.255.255
+
+14 match source-address 10.60.2.0 255.255.255.0
+
+15 match source-address 10.60.5.0 255.255.255.0
+
+16 match source-address 156.17.70.241 255.255.255.255
+
+18 match source-address 156.17.66.81 255.255.255.255
+
+20 match source-address 156.17.8.90 255.255.255.255
+
+100 match source-address 156.17.66.227 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-SIECI-ZSI
+
+2 match source-address 10.150.1.12 255.255.255.255
+
+3 match source-address 10.150.1.13 255.255.255.255
+
+100 match source-address 10.150.0.0 255.255.0.0
+
+class-map type http loadbalance match-any DOSTEP-Z-THD
+
+2 match source-address 156.17.75.20 255.255.255.255
+
+3 match source-address 10.250.0.156 255.255.255.255
+
+4 match source-address 10.250.0.146 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-WCSS-kc.e-science.pl(http://DOSTEP-Z-WCSS-kc.e-science.pl)
+
+2 match source-address 156.17.1.242 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-asap-plagiat
+
+2 match source-address 156.17.66.37 255.255.255.255
+
+3 match source-address 156.17.66.38 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-blue-media-platnosci
+
+2 match source-address 195.182.23.214 255.255.255.255
+
+3 match source-address 195.182.23.215 255.255.255.255
+
+4 match source-address 195.182.23.248 255.255.255.255
+
+5 match source-address 195.182.23.249 255.255.255.255
+
+6 match source-address 195.182.142.14 255.255.255.255
+
+7 match source-address 195.182.142.17 255.255.255.255
+
+8 match source-address 195.182.142.236 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-vlan424-DO-DEVESB
+
+2 match source-address 10.10.21.1 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-vlan424-DO-DEVWSDL
+
+2 match source-address 10.10.21.1 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-vlan424-DO-INSIDE-VIP-PROD
+
+2 match source-address 10.10.21.31 255.255.255.255
+
+3 match source-address 10.10.21.32 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+2 match source-address 156.17.197.33 255.255.255.255
+
+3 match source-address 156.17.197.53 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-do-JSOSMONITOR
+
+2 match source-address 156.17.66.224 255.255.255.224
+
+3 match source-address 156.17.73.25 255.255.255.255
+
+4 match source-address 10.0.0.1 255.255.255.255
+
+5 match source-address 156.17.66.9 255.255.255.255
+
+6 match source-address 156.17.66.75 255.255.255.255
+
+7 match source-address 156.17.70.236 255.255.255.255
+
+8 match source-address 156.17.70.225 255.255.255.255
+
+9 match source-address 156.17.73.209 255.255.255.255
+
+10 match source-address 156.17.73.222 255.255.255.255
+
+11 match source-address 10.60.2.0 255.255.255.0
+
+12 match source-address 10.60.5.0 255.255.255.0
+
+13 match source-address 156.17.28.226 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-do-JSOSMONITOR-dla-RAPORTOW
+
+2 match source-address 156.17.66.227 255.255.255.255
+
+3 match source-address 156.17.66.9 255.255.255.255
+
+4 match source-address 156.17.66.75 255.255.255.255
+
+5 match source-address 156.17.66.225 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-do-VIP-EnterpriseManager-4904
+
+
+
+2 match source-address 156.17.48.140 255.255.255.255
+
+class-map type http loadbalance match-any DOSTEP-wcss-samorzad
+
+2 match source-address 156.17.197.53 255.255.255.255
+
+3 match source-address 156.17.197.54 255.255.255.255
+
+4 match source-address 156.17.197.55 255.255.255.255
+
+class-map type http loadbalance match-any L7-OAUTH-BLOKOWANE-URL
+
+2 match http url \x2F
+
+3 match http url /admin-console/.*
+
+4 match http url /jmx-console/.*
+
+5 match http url /jbossws/.*
+
+class-map type http loadbalance match-any L7-OAUTH-HTTP-REDIRECT
+
+2 match http url \x2F
+
+3 match http url /admin-console/.*
+
+4 match http url /jmx-console/.*
+
+5 match http url /jbossws/.*
+
+class-map match-all NAT-DEV-OAUTHCERT-MERCURY
+
+2 match destination-address 192.168.80.8 255.255.255.255
+
+class-map type http loadbalance match-any POKL-obloczek
+
+2 match source-address 10.165.0.29 255.255.255.255
+
+class-map match-all RAPORTY-01
+
+2 match source-address 10.10.31.1 255.255.255.255
+
+3 match destination-address 10.10.0.0 255.255.0.0
+
+class-map match-all RAPORTY-02
+
+2 match source-address 10.10.32.1 255.255.255.255
+
+3 match destination-address 10.10.0.0 255.255.0.0
+
+class-map match-all RAPORTY-03
+
+2 match source-address 10.10.33.1 255.255.255.255
+
+3 match destination-address 10.10.0.0 255.255.0.0
+
+class-map match-all RAPORTY-04
+
+2 match source-address 10.10.34.1 255.255.255.255
+
+3 match destination-address 10.10.0.0 255.255.0.0
+
+class-map type http loadbalance match-any TESTY-JSOS2-FIRMA-ZEWNETRZNA
+
+2 match source-address 90.156.81.2 255.255.255.255
+
+3 match source-address 80.51.51.59 255.255.255.255
+
+4 match source-address 85.198.198.147 255.255.255.255
+
+5 match source-address 176.31.254.40 255.255.255.255
+
+6 match source-address 88.156.81.243 255.255.255.255
+
+7 match source-address 94.23.206.118 255.255.255.255
+
+8 match source-address 176.31.121.27 255.255.255.255
+
+class-map type http loadbalance match-any TETA-PWR-i-FIRMA
+
+2 match source-address 10.7.32.0 255.255.224.0
+
+3 match source-address 10.150.0.0 255.255.0.0
+
+4 match source-address 10.151.0.0 255.255.0.0
+
+class-map match-any VIP-10-10-10-30-SSH
+
+2 match virtual-address 156.17.28.240 tcp eq 22
+
+class-map match-any VIP-AVAMAR-do-DB
+
+2 match virtual-address 156.17.28.238 any
+
+class-map match-any VIP-DB-edumod-1521
+
+2 match virtual-address 156.17.48.56 tcp eq 1521
+
+class-map match-any VIP-DB-edutest-1521
+
+2 match virtual-address 156.17.48.57 tcp eq 1521
+
+class-map match-any VIP-DEV-ANKIETYZACJA-HTTP
+
+2 match virtual-address 156.17.48.49 tcp eq www
+
+class-map match-any VIP-DEV-ANKIETYZACJA-HTTPS
+
+2 match virtual-address 156.17.48.49 tcp eq https
+
+class-map match-any VIP-DEV-API-PWR-SSH
+
+2 match virtual-address 156.17.28.233 tcp eq 22
+
+class-map match-any VIP-DEV-DYPLOMY-443
+
+2 match virtual-address 156.17.28.231 tcp eq https
+
+class-map match-any VIP-DEV-DYPLOMY-80
+
+2 match virtual-address 156.17.28.231 tcp eq www
+
+class-map match-any VIP-DEV-DYPLOMY-APP-22
+
+2 match virtual-address 156.17.28.231 tcp eq 55022
+
+class-map match-any VIP-DEV-DYPLOMY-DB-22
+
+2 match virtual-address 156.17.28.231 tcp eq 55122
+
+class-map match-any VIP-DEV-OAUTHCERT-HTTP
+
+2 match virtual-address 156.17.48.50 tcp eq www
+
+
+
+class-map match-any VIP-DEV-OAUTHCERT-HTTPS
+
+2 match virtual-address 156.17.48.50 tcp eq https
+
+class-map match-any VIP-DEVANK-HTTP
+
+2 match virtual-address 156.17.28.226 tcp eq www
+
+class-map match-any VIP-DEVANK-HTTPS
+
+2 match virtual-address 156.17.28.226 tcp eq https
+
+class-map match-any VIP-DEVANK-SSH
+
+2 match virtual-address 156.17.28.226 tcp eq 22
+
+class-map match-any VIP-DEVESB-8280
+
+2 match virtual-address 156.17.28.234 tcp eq 8280
+
+class-map match-any VIP-DEVESB-HTTP
+
+2 match virtual-address 156.17.28.234 tcp eq www
+
+class-map match-any VIP-DEVESB-HTTPS
+
+2 match virtual-address 156.17.28.234 tcp eq https
+
+class-map match-any VIP-DEVJSOS-HTTP
+
+2 match virtual-address 156.17.28.235 tcp eq www
+
+class-map match-any VIP-DEVJSOS-HTTPS
+
+2 match virtual-address 156.17.28.235 tcp eq https
+
+class-map match-any VIP-DEVOAUTH-HTTP
+
+2 match virtual-address 156.17.28.236 tcp eq www
+
+class-map match-any VIP-DEVOAUTH-HTTPS
+
+2 match virtual-address 156.17.28.236 tcp eq https
+
+class-map match-any VIP-DEVPOLON-HTTP
+
+2 match virtual-address 156.17.28.229 tcp eq www
+
+class-map match-any VIP-DEVPOLON-HTTPS
+
+2 match virtual-address 156.17.28.229 tcp eq https
+
+class-map match-any VIP-DEVPOLON-SSH
+
+2 match virtual-address 156.17.28.229 tcp eq 22
+
+class-map match-any VIP-DEVWSDL-HTTP
+
+2 match virtual-address 156.17.28.233 tcp eq www
+
+class-map match-any VIP-DEVWSDL-HTTPS
+
+2 match virtual-address 156.17.28.233 tcp eq https
+
+class-map match-any VIP-DEVZSA-DB-1521
+
+2 match virtual-address 156.17.28.227 tcp eq 1521
+
+class-map match-any VIP-DEVZSA-HTTP
+
+2 match virtual-address 156.17.28.227 tcp eq www
+
+class-map match-any VIP-DEVZSA-HTTPS
+
+2 match virtual-address 156.17.28.227 tcp eq https
+
+class-map match-any VIP-DEVZSA-SSH
+
+2 match virtual-address 156.17.28.227 tcp eq 22
+
+class-map match-any VIP-DYPLOM-APP-ssh
+
+3 match virtual-address 156.17.48.55 tcp eq 23122
+
+class-map match-any VIP-DYPLOM-DB-ssh
+
+3 match virtual-address 156.17.48.55 tcp eq 23222
+
+class-map match-any VIP-DYPLOM-HTTP
+
+3 match virtual-address 156.17.48.55 tcp eq www
+
+class-map match-any VIP-DYPLOM-HTTPS
+
+3 match virtual-address 156.17.48.55 tcp eq https
+
+class-map match-any VIP-ESB-8020
+
+2 match virtual-address 156.17.48.53 tcp eq 8020
+
+class-map match-any VIP-ESB-8280
+
+2 match virtual-address 156.17.48.53 tcp eq 8280
+
+class-map match-any VIP-EnterpriseManager-4904
+
+2 match virtual-address 156.17.28.238 tcp eq 4904
+
+class-map match-any VIP-INSIDE-API-8080
+
+2 match virtual-address 10.10.9.180 tcp eq 8080
+
+class-map match-any VIP-INSIDE-API-PWR-80
+
+2 match virtual-address 10.10.9.181 tcp eq www
+
+class-map match-any VIP-INSIDE-DEV-DYPLOMY-ESB-8280
+
+2 match virtual-address 10.10.21.101 tcp eq 8280
+
+class-map match-any VIP-INSIDE-DEV-DYPLOMY-WSDL-80
+
+2 match virtual-address 10.10.21.102 tcp eq www
+
+class-map match-any VIP-INSIDE-DYPLOM-PROD-ESB-8280
+
+2 match virtual-address 10.10.21.103 tcp eq 8280
+
+class-map match-any VIP-INSIDE-DYPLOM-PROD-OAUTH-8080
+
+2 match virtual-address 10.10.21.105 tcp eq 8080
+
+class-map match-any VIP-INSIDE-DYPLOM-PROD-WSDL-80
+
+
+
+2 match virtual-address 10.10.21.104 tcp eq www
+
+class-map match-any VIP-INSIDE-ESB-8280
+
+2 match virtual-address 10.10.5.190 tcp eq 8280
+
+class-map match-any VIP-INSIDE-OAUTH-8080
+
+2 match virtual-address 10.10.5.170 tcp eq 8080
+
+class-map match-any VIP-INSIDE-RAPORTY-7777
+
+2 match virtual-address 10.10.10.100 tcp eq 7777
+
+class-map match-any VIP-INSIDE-v0999-OAUTH-8080
+
+2 match virtual-address 10.10.10.101 tcp eq 8080
+
+3 match virtual-address 10.10.10.101 tcp eq www
+
+class-map match-any VIP-JSOS-HTTP
+
+2 match virtual-address 156.17.28.249 tcp eq www
+
+class-map match-any VIP-JSOS-HTTPS
+
+2 match virtual-address 156.17.28.249 tcp eq https
+
+class-map match-any VIP-JSOSMONITOR-HTTP
+
+2 match virtual-address 156.17.28.225 tcp eq www
+
+class-map match-any VIP-JSOSMONITOR-HTTPS
+
+2 match virtual-address 156.17.28.225 tcp eq https
+
+class-map match-any VIP-JSOSMONITOR-POSTGRESQL
+
+2 match virtual-address 156.17.28.225 tcp eq 5432
+
+class-map match-any VIP-JSOSMONITOR-SERVER-AGENT
+
+2 match virtual-address 156.17.28.225 tcp eq 10051
+
+class-map match-any VIP-JSOSMONITOR-SSH
+
+2 match virtual-address 156.17.28.225 tcp eq 22
+
+class-map match-any VIP-MONITORING-OAUTH-443
+
+2 match virtual-address 10.10.0.170 tcp eq https
+
+class-map match-any VIP-MONITORING-OAUTH-80
+
+2 match virtual-address 10.10.0.170 tcp eq www
+
+class-map match-any VIP-MONITORING-OAUTH-8080
+
+2 match virtual-address 10.10.0.170 tcp eq 8080
+
+class-map match-any VIP-NEW-ANKIETYZACJA-HTTP
+
+2 match virtual-address 156.17.48.59 tcp eq www
+
+class-map match-any VIP-NEW-ANKIETYZACJA-HTTPS
+
+2 match virtual-address 156.17.48.59 tcp eq https
+
+class-map match-any VIP-OAS-160-SSH
+
+2 match virtual-address 156.17.28.230 tcp eq 22
+
+class-map match-any VIP-OAUTH-8080
+
+2 match virtual-address 156.17.28.250 tcp eq 8080
+
+class-map match-any VIP-OAUTH-HTTP
+
+2 match virtual-address 156.17.28.250 tcp eq www
+
+class-map match-any VIP-OAUTH-HTTPS
+
+2 match virtual-address 156.17.28.250 tcp eq https
+
+class-map match-any VIP-POLON-HTTP
+
+2 match virtual-address 156.17.28.232 tcp eq www
+
+class-map match-any VIP-POLON-HTTPS
+
+2 match virtual-address 156.17.28.232 tcp eq https
+
+class-map match-any VIP-POLON-SSH
+
+2 match virtual-address 156.17.28.232 tcp eq 22
+
+class-map match-any VIP-SW160-POSTGRESQL
+
+2 match virtual-address 156.17.28.225 tcp eq 5433
+
+class-map match-any VIP-SZKOL-JSOS-HTTP
+
+3 match virtual-address 156.17.28.247 tcp eq www
+
+class-map match-any VIP-SZKOL-JSOS-HTTPS
+
+3 match virtual-address 156.17.28.247 tcp eq https
+
+class-map match-any VIP-SZKOL-JSOS-SSH
+
+3 match virtual-address 156.17.28.247 tcp eq 22
+
+class-map match-any VIP-SZKOL-OAUTH-CERT-HTTP
+
+2 match virtual-address 156.17.48.51 tcp eq www
+
+class-map match-any VIP-SZKOL-OAUTH-CERT-HTTPS
+
+2 match virtual-address 156.17.48.51 tcp eq https
+
+class-map match-any VIP-SZKOL-OAUTH-CERT-optional-HTTP
+
+2 match virtual-address 156.17.48.52 tcp eq www
+
+class-map match-any VIP-SZKOL-OAUTH-CERT-optional-HTTPS
+
+2 match virtual-address 156.17.48.52 tcp eq https
+
+class-map match-any VIP-SZKOL-OAUTH-HTTP
+
+2 match virtual-address 156.17.28.228 tcp eq www
+
+class-map match-any VIP-SZKOL-OAUTH-HTTPS
+
+
+
+2 match virtual-address 156.17.28.228 tcp eq https
+
+class-map match-any VIP-TIVOLI-RTEMS-JSOS-65022
+
+2 match virtual-address 156.17.28.225 tcp eq 65022
+
+class-map match-any VIP-WSDL-80
+
+2 match virtual-address 156.17.48.54 tcp eq www
+
+class-map match-any VIP-ZSA-HTTP
+
+2 match virtual-address 156.17.28.244 tcp eq www
+
+class-map match-any VIP-ZSA-HTTPS
+
+2 match virtual-address 156.17.28.244 tcp eq https
+
+class-map match-any VIP-ZSA-SSH
+
+2 match virtual-address 156.17.28.244 tcp eq 22
+
+class-map match-any VIP-studiumtalent-HTTP
+
+2 match virtual-address 156.17.48.58 tcp eq www
+
+class-map match-any VIP-studiumtalent-HTTPS
+
+2 match virtual-address 156.17.48.58 tcp eq https
+
+class-map type http loadbalance match-any VPN--AD-JSOS-ibm-tec
+
+2 match source-address 10.60.6.0 255.255.255.0
+
+class-map type http loadbalance match-any VPN-JSOS-PIX
+
+3 match source-address 156.17.66.227 255.255.255.255
+
+4 match source-address 156.17.73.222 255.255.255.255
+
+class-map type http loadbalance match-any ZSI-TETA
+
+3 match source-address 10.150.2.3 255.255.255.255
+
+4 match source-address 10.150.2.4 255.255.255.255
+
+5 match source-address 10.150.0.0 255.255.0.0
+
+6 match source-address 156.17.66.224 255.255.255.224
+
+class-map type http loadbalance match-any klikacz
+
+2 match source-address 1.1.1.1 255.255.255.255
+
+class-map type http loadbalance match-any pokoj-jsos
+
+2 match source-address 10.100.4.0 255.255.255.0
+
+3 match source-address 156.17.73.222 255.255.255.255
+
+4 match source-address 10.60.5.0 255.255.255.0
+
+class-map type http loadbalance match-any spark
+
+2 match source-address 156.17.66.226 255.255.255.255
+
+3 match source-address 156.17.8.64 255.255.255.224
+
+class-map type http loadbalance match-any tmp-testy-ace
+
+2 match source-address 156.17.66.227 255.255.255.255
+
+class-map type http loadbalance match-any v0108--Rekrutacja
+
+2 match source-address 172.17.108.0 255.255.255.0
+
+3 match source-address 156.17.6.12 255.255.255.255
+
+class-map type http loadbalance match-any vlan666
+
+10 match source-address 156.17.66.227 255.255.255.255
+
+
+
+policy-map type management first-match DOSTEP-ADMINISTRACYJNY-INSIDE
+
+class DOSTEP-ADMINISTRACYJNY-INSIDE
+
+permit
+
+policy-map type management first-match DOSTEP-ADMINISTRACYJNY-OUTSIDE
+
+class DOSTEP-ADMINISTRACYJNY-OUTSIDE
+
+permit
+
+
+
+policy-map type loadbalance first-match 10-10-10-30-SSH
+
+class DOSTEP-DO-10-10-10-30-SSH
+
+serverfarm 10-10-10-30-SSH
+
+policy-map type loadbalance first-match AVAMAR-do-DB
+
+class AVAMAR
+
+serverfarm db-avamar
+
+policy-map type loadbalance first-match DB-edumod-1521
+
+class DOSTEP-Z-THD
+
+serverfarm DB-edumod-1521
+
+policy-map type loadbalance first-match DB-edutest-1521
+
+class DOSTEP-Z-THD
+
+serverfarm DB-edutest-1521
+
+policy-map type loadbalance first-match DEV-ANKIETYZACJA-HTTP-REDIRECT
+
+class class-default
+
+serverfarm DEV-ANKIETYZACJA-REDIRECT
+
+policy-map type loadbalance first-match DEV-ANKIETYZACJA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+sticky-serverfarm STICKY-ANKIETYZACJA
+
+
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+sticky-serverfarm STICKY-ANKIETYZACJA
+
+class class-default
+
+sticky-serverfarm STICKY-ANKIETYZACJA
+
+policy-map type loadbalance first-match DEV-API-PWR-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm DEV-API-PWR-22
+
+policy-map type loadbalance first-match DEV-DYPLOMY-443
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DEV-DYPLOMY-APP-8080
+
+policy-map type loadbalance first-match DEV-DYPLOMY-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DEV-DYPLOMY-APP-80
+
+policy-map type loadbalance first-match DEV-DYPLOMY-APP-22
+
+class DOSTEP-DO-DEV-DYPLOMY
+
+serverfarm DEV-DYPLOMY-APP-22
+
+policy-map type loadbalance first-match DEV-DYPLOMY-DB-22
+
+class DOSTEP-DO-DEV-DYPLOMY
+
+serverfarm DEV-DYPLOMY-DB-22
+
+policy-map type loadbalance first-match DEV-OAUTHCERT-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-OAUTHCERT-8080
+
+policy-map type loadbalance first-match DEV-OAUTHCERT-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-OAUTHCERT-8080
+
+class class-default
+
+action INSERT-CERT-HEADER
+
+policy-map type loadbalance first-match DEVANK-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVANK-REDIRECT
+
+policy-map type loadbalance first-match DEVANK-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVANK-80
+
+policy-map type loadbalance first-match DEVANK-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm DEVANK-22
+
+policy-map type loadbalance first-match DEVESB-8280
+
+class POKL-obloczek
+
+serverfarm DEV-ESB-8280
+
+class TETA-PWR-i-FIRMA
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEV-ESB-8280
+
+class VPN--AD-JSOS-ibm-tec
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-wcss-samorzad
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+serverfarm DEV-ESB-8280
+
+policy-map type loadbalance first-match DEVESB-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+
+
+serverfarm DEV-ESB-8280
+
+policy-map type loadbalance first-match DEVESB-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEV-ESB-8280
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+serverfarm DEV-ESB-8280
+
+policy-map type loadbalance first-match DEVJSOS-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm APP-DEVJSOS-80
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm APP-DEVJSOS-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm APP-DEVJSOS-80
+
+class DOSTEP-Z-blue-media-platnosci
+
+serverfarm APP-DEVJSOS-80
+
+policy-map type loadbalance first-match DEVJSOS-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm APP-DEVJSOS-80
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm APP-DEVJSOS-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm APP-DEVJSOS-80
+
+class DOSTEP-Z-blue-media-platnosci
+
+serverfarm APP-DEVJSOS-80
+
+policy-map type loadbalance first-match DEVOAUTH-HTTP
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm APP-DEVJSOS-REDIRECT
+
+class POKL-obloczek
+
+serverfarm DEVOAUTH-8080
+
+class TETA-PWR-i-FIRMA
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEVOAUTH-8080
+
+class VPN--AD-JSOS-ibm-tec
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-wcss-samorzad
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+serverfarm DEVOAUTH-8080
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-REDIRECT-DEVOAUTH-EDU
+
+policy-map type loadbalance first-match DEVOAUTH-HTTPS
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm APP-DEVJSOS-REDIRECT
+
+class POKL-obloczek
+
+serverfarm DEVOAUTH-8080
+
+class TETA-PWR-i-FIRMA
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-asap-plagiat
+
+
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEVOAUTH-8080
+
+class VPN--AD-JSOS-ibm-tec
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-wcss-samorzad
+
+serverfarm DEVOAUTH-8080
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+serverfarm DEVOAUTH-8080
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DEVOAUTH-8080
+
+policy-map type loadbalance first-match DEVPOLON-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVPOLON-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DEVPOLON-80
+
+policy-map type loadbalance first-match DEVPOLON-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVPOLON-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DEVPOLON-80
+
+policy-map type loadbalance first-match DEVPOLON-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm DEVPOLON-22
+
+policy-map type loadbalance first-match DEVWSDL-HTTP
+
+class POKL-obloczek
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class TETA-PWR-i-FIRMA
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class VPN--AD-JSOS-ibm-tec
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+class DOSTEP-wcss-samorzad
+
+serverfarm FARMA-REDIRECT-DEVWSDL-EDU
+
+policy-map type loadbalance first-match DEVWSDL-HTTPS
+
+class POKL-obloczek
+
+serverfarm DEV-WSDL-80
+
+class TETA-PWR-i-FIRMA
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-SIECI-PKI
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm DEV-WSDL-80
+
+class VPN--AD-JSOS-ibm-tec
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+
+
+serverfarm DEV-WSDL-80
+
+class DOSTEP-wcss-samorzad
+
+serverfarm DEV-WSDL-80
+
+policy-map type loadbalance first-match DEVZSA-DB-1521
+
+class ZSI-TETA
+
+serverfarm DEVZSA-DB-1521
+
+policy-map type loadbalance first-match DEVZSA-HTTP
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVZSA-REDIRECT
+
+class v0108--Rekrutacja
+
+serverfarm DEVZSA-REDIRECT
+
+policy-map type loadbalance first-match DEVZSA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DEVZSA-80
+
+class v0108--Rekrutacja
+
+serverfarm DEVZSA-80
+
+policy-map type loadbalance first-match DEVZSA-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm DEVZSA-22
+
+policy-map type loadbalance first-match DYPLOM-APP-22
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DYPLOM-APP-22
+
+policy-map type loadbalance first-match DYPLOM-DB-22
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DYPLOM-DB-22
+
+policy-map type loadbalance first-match DYPLOM-HTTP
+
+class class-default
+
+serverfarm DYPLOM-EDU-REDIRECT
+
+policy-map type loadbalance first-match DYPLOM-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm DYPLOM-APP-8080
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm DYPLOM-APP-8080
+
+class class-default
+
+serverfarm DYPLOM-APP-8080
+
+policy-map type loadbalance first-match ESB-8280
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-vm-rejestracja.pwr.edu.pl(http://DOSTEP-Z-vm-rejestracja.pwr.edu.pl)
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-WCSS-kc.e-science.pl(http://DOSTEP-Z-WCSS-kc.e-science.pl)
+
+serverfarm ESB-8280
+
+policy-map type loadbalance first-match EnterpriseManager-4904
+
+class DOSTEP-do-VIP-EnterpriseManager-4904
+
+serverfarm EnterpriseManager-4904
+
+policy-map type loadbalance first-match INSIDE-API-8080
+
+class class-default
+
+serverfarm API-8080
+
+policy-map type loadbalance first-match INSIDE-API-PWR-80
+
+class class-default
+
+serverfarm API-PWR-80
+
+policy-map type loadbalance first-match INSIDE-DEV-DYPLOMY-ESB-8280
+
+class DOSTEP-Z-vlan424-DO-DEVESB
+
+serverfarm DEV-ESB-8280
+
+policy-map type loadbalance first-match INSIDE-DEV-DYPLOMY-WSDL-80
+
+class DOSTEP-Z-vlan424-DO-DEVWSDL
+
+serverfarm DEV-WSDL-80
+
+policy-map type loadbalance first-match INSIDE-DYPLOM-PROD-ESB-8280
+
+class DOSTEP-Z-vlan424-DO-DEVESB
+
+
+
+serverfarm ESB-8280
+
+class DOSTEP-Z-vlan424-DO-INSIDE-VIP-PROD
+
+serverfarm ESB-8280
+
+policy-map type loadbalance first-match INSIDE-DYPLOM-PROD-OAUTH-8080
+
+class DOSTEP-Z-vlan424-DO-DEVWSDL
+
+serverfarm OAUTH-8080
+
+class DOSTEP-Z-vlan424-DO-INSIDE-VIP-PROD
+
+serverfarm OAUTH-8080
+
+policy-map type loadbalance first-match INSIDE-DYPLOM-PROD-WSDL-80
+
+class DOSTEP-Z-vlan424-DO-DEVWSDL
+
+serverfarm WSDL-80
+
+class DOSTEP-Z-vlan424-DO-INSIDE-VIP-PROD
+
+serverfarm WSDL-80
+
+policy-map type loadbalance first-match INSIDE-ESB-8280
+
+class class-default
+
+serverfarm ESB-8280
+
+policy-map type loadbalance first-match INSIDE-OAUTH-8080
+
+class L7-OAUTH-BLOKOWANE-URL
+
+class class-default
+
+serverfarm OAUTH-8080
+
+policy-map type loadbalance first-match INSIDE-RAPORTY-7777
+
+class class-default
+
+serverfarm RAPORTY-7777
+
+policy-map type loadbalance first-match JSOS-HTTP-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm FARMA-REDIRECT-JSOS-EDU
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-REDIRECT-JSOS-EDU
+
+class class-default
+
+serverfarm FARMA-REDIRECT-JSOS-EDU
+
+policy-map type loadbalance first-match JSOS-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm APP-JSOS-443
+
+class class-default
+
+serverfarm APP-JSOS-443 backup PROD-AWARIA
+
+policy-map type loadbalance first-match JSOSMONITOR-HTTP-REDIRECT
+
+class DOSTEP-do-JSOSMONITOR
+
+serverfarm FARMA-REDIRECT-JSOSMONITOR
+
+policy-map type loadbalance first-match JSOSMONITOR-HTTPS
+
+class DOSTEP-do-JSOSMONITOR
+
+serverfarm JSOSMONITOR-80
+
+policy-map type loadbalance first-match JSOSMONITOR-POSTGRESQL
+
+class DOSTEP-do-JSOSMONITOR-dla-RAPORTOW
+
+serverfarm JSOSMONITOR-5432
+
+policy-map type loadbalance first-match JSOSMONITOR-SERVER-AGENT
+
+class DOSTEP-do-JSOSMONITOR
+
+serverfarm JSOSMONITOR-10051
+
+policy-map type loadbalance first-match JSOSMONITOR-SSH
+
+class DOSTEP-do-JSOSMONITOR
+
+serverfarm JSOSMONITOR-22
+
+policy-map type loadbalance first-match NEW-ANKIETYZACJA-HTTP-REDIRECT
+
+class class-default
+
+serverfarm NEW-ANKIETYZACJA-REDIRECT
+
+policy-map type loadbalance first-match NEW-ANKIETYZACJA-HTTPS
+
+class class-default
+
+sticky-serverfarm STICKY-ANKIETYZACJA
+
+policy-map type loadbalance first-match OAS-160-SSH
+
+class class-default
+
+serverfarm OAS-160-22
+
+policy-map type loadbalance first-match OAUTH-8080
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm OAUTH-8080
+
+class class-default
+
+serverfarm OAUTH-8080
+
+policy-map type loadbalance first-match OAUTH-HTTP-REDIRECT
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm APP-JSOS-REDIRECT
+
+
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm FARMA-REDIRECT-OAUTH-EDU
+
+class class-default
+
+serverfarm FARMA-REDIRECT-OAUTH-EDU
+
+policy-map type loadbalance first-match OAUTH-HTTPS
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm APP-JSOS-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+sticky-serverfarm STICKY-net-OAUTH2020-443
+
+class class-default
+
+sticky-serverfarm STICKY-net-OAUTH2020-443
+
+policy-map type loadbalance first-match POLICY-MAP-DYDAKTYKA
+
+class class-default
+
+serverfarm FARMA-DYDAKTYKA backup FARMA-AWARIA-PORTAL
+
+policy-map type loadbalance first-match POLICY-MAP-EDUKACJA-HTTP-REDIRECT
+
+class class-default
+
+serverfarm FARMA-EDUKACJA-REDIRECT
+
+policy-map type loadbalance first-match POLICY-MAP-EDUKACJA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-PWR
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-PWR
+
+class class-default
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-SPOZA-PWR
+
+policy-map type loadbalance first-match POLICY-MAP-EDZIEKANAT-HTTP
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+sticky-serverfarm EDZIEKANAT-EDUJNLP
+
+policy-map type loadbalance first-match POLICY-MAP-EDZIEKANAT-JAVA
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+sticky-serverfarm EDZIEKANAT-PRZELOTKA
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-12420
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-12420
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-12420
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-12430
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-12430
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-12430
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-12440
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-12440
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-12440
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-12450
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-12450
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-12450
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-HTTP-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-7777
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-7777
+
+policy-map type loadbalance first-match POLICY-MAP-PCHLA2-HTTPS
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-OAS-08-7777
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm FARMA-OAS-08-7777
+
+policy-map type loadbalance first-match POLICY-MAP-REKRUTACJA-HTTP-REDIRECT
+
+class vlan666
+
+serverfarm FARMA-REKRUTACJA-REDIRECT-eksperyment
+
+class class-default
+
+serverfarm FARMA-REKRUTACJA-REDIRECT
+
+policy-map type loadbalance first-match POLICY-MAP-REKRUTACJA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-PWR
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-PWR
+
+class class-default
+
+sticky-serverfarm STICKY-GROUP-FARMA-OAS-PORTAL-SPOZA-PWR
+
+policy-map type loadbalance first-match POLON-HTTP-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm FARMA-REDIRECT-POLON-PWR
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm FARMA-REDIRECT-POLON-PWR
+
+policy-map type loadbalance first-match POLON-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm POLON-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm POLON-80
+
+policy-map type loadbalance first-match POLON-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm POLON-22
+
+policy-map type loadbalance first-match STUDIUMTALENT-HTTP
+
+class class-default
+
+serverfarm STUDIUMTALENT-HTTP
+
+policy-map type loadbalance first-match STUDIUMTALENT-HTTPS
+
+class class-default
+
+serverfarm STUDIUMTALENT-HTTPS
+
+policy-map type loadbalance first-match SW160-POSTGRESQL
+
+class DOSTEP-do-JSOSMONITOR-dla-RAPORTOW
+
+serverfarm SW160-5432
+
+policy-map type loadbalance first-match SZKOL-JSOS-HTTP-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+policy-map type loadbalance first-match SZKOL-JSOS-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-JSOS-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-JSOS-80
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm SZKOL-JSOS-80
+
+policy-map type loadbalance first-match SZKOL-JSOS-SSH
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-JSOS-22
+
+policy-map type loadbalance first-match SZKOL-OAUTH-CERT-HTTP-REDIRECT
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-OAUTH-CERT-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-OAUTH-CERT-REDIRECT
+
+policy-map type loadbalance first-match SZKOL-OAUTH-CERT-HTTPS
+
+class class-default
+
+serverfarm SZKOL-OAUTH-CERT-8080
+
+action INSERT-CERT-HEADER
+
+policy-map type loadbalance first-match SZKOL-OAUTH-CERT-optional-HTTP-REDIRECT
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-OAUTH-CERT-optional-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-OAUTH-CERT-optional-REDIRECT
+
+policy-map type loadbalance first-match SZKOL-OAUTH-CERT-optional-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-OAUTH-CERT-optional-443
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-OAUTH-CERT-optional-443
+
+
+
+policy-map type loadbalance first-match SZKOL-OAUTH-HTTP-REDIRECT
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-OAUTH-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-OAUTH-REDIRECT
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm SZKOL-OAUTH-8080
+
+policy-map type loadbalance first-match SZKOL-OAUTH-HTTPS
+
+class L7-OAUTH-HTTP-REDIRECT
+
+serverfarm SZKOL-JSOS-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm SZKOL-OAUTH-8080
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm SZKOL-OAUTH-8080
+
+class DOSTEP-Z-PG--Politechnika-Gdanska
+
+serverfarm SZKOL-OAUTH-8080
+
+class class-default
+
+action INSERT-CERT-HEADER
+
+policy-map type loadbalance first-match TESTY-EDUKACJA-HTTP-REDIRECT
+
+class class-default
+
+serverfarm TEST-EDUKACJA2-REDIRECT
+
+policy-map type loadbalance first-match TESTY-EDUKACJA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+sticky-serverfarm TESTY-STICKY-GROUP-FARMA-OAS-PORTAL
+
+policy-map type loadbalance first-match TIVOLI-RTEMS-JSOS-22
+
+class class-default
+
+serverfarm TIVOLI-RTEMS-JSOS-22
+
+policy-map type loadbalance first-match WSDL-80
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm WSDL-80
+
+class DOSTEP-Z-asap-plagiat
+
+serverfarm WSDL-80
+
+class DOSTEP-Z-SIECI-ZSI
+
+serverfarm WSDL-80
+
+class DOSTEP-Z-SIECI-CWiNT-repozytorium
+
+serverfarm WSDL-80
+
+class vlan666
+
+serverfarm WSDL-80
+
+class DOSTEP-Z-DII-elearning
+
+serverfarm WSDL-80
+
+policy-map type loadbalance first-match ZSA-HTTP-REDIRECT
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm ZSA-REDIRECT
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm ZSA-REDIRECT
+
+class class-default
+
+serverfarm ZSA-REDIRECT
+
+policy-map type loadbalance first-match ZSA-HTTPS
+
+class DOSTEP-Z-SIECI-TESTOWYCH
+
+serverfarm ZSA-80
+
+class CLASS-MAP-RUCH-Z-IP-PWR
+
+serverfarm ZSA-80
+
+class class-default
+
+serverfarm ZSA-80
+
+policy-map type loadbalance first-match ZSA-SSH
+
+class DOSTEP-SSH-DO-MASZYN-ADMINSTRACYJNY
+
+serverfarm ZSA-22
+
+
+
+policy-map multi-match JSOS-SSL-POLICY
+
+class CLASS-MAP-VIP-EDUKACJA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-EDUKACJA-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-EDUKACJA-HTTPS
+
+loadbalance vip inservice
+
+
+
+loadbalance policy POLICY-MAP-EDUKACJA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server edukacja.pwr.wroc.pl-2020_2022
+
+class CLASS-MAP-VIP-REKRUTACJA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-REKRUTACJA-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-REKRUTACJA-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-REKRUTACJA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class CLASS-MAP-VIP-EDZIEKANAT-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-EDZIEKANAT-HTTP
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-EDZIEKANAT-JAVA
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-EDZIEKANAT-JAVA
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-PCHLA2-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-PCHLA2-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class CLASS-MAP-VIP-PCHLA2-12420
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-12420
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-PCHLA2-12430
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-12430
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-PCHLA2-12440
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-12440
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-PCHLA2-12450
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-PCHLA2-12450
+
+loadbalance vip icmp-reply
+
+class CLASS-MAP-VIP-DYDAKTYKA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLICY-MAP-DYDAKTYKA
+
+loadbalance vip icmp-reply
+
+class VIP-10-10-10-30-SSH
+
+loadbalance vip inservice
+
+loadbalance policy 10-10-10-30-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-JSOS-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy JSOS-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-JSOS-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy JSOS-HTTPS
+
+loadbalance vip icmp-reply
+
+class VIP-OAUTH-8080
+
+loadbalance vip inservice
+
+loadbalance policy OAUTH-8080
+
+
+
+loadbalance vip icmp-reply
+
+class VIP-OAUTH-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy OAUTH-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-OAUTH-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy OAUTH-HTTPS
+
+loadbalance vip icmp-reply
+
+class VIP-AVAMAR-do-DB
+
+loadbalance vip inservice
+
+loadbalance policy AVAMAR-do-DB
+
+loadbalance vip icmp-reply
+
+class VIP-EnterpriseManager-4904
+
+loadbalance vip inservice
+
+loadbalance policy EnterpriseManager-4904
+
+loadbalance vip icmp-reply
+
+class VIP-DEVJSOS-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVJSOS-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVJSOS-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVJSOS-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DEVOAUTH-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVOAUTH-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVOAUTH-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVOAUTH-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DEVESB-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVESB-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVESB-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVESB-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DEVESB-8280
+
+loadbalance vip inservice
+
+loadbalance policy DEVESB-8280
+
+loadbalance vip icmp-reply
+
+class VIP-DEVWSDL-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVWSDL-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVWSDL-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVWSDL-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-POLON-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy POLON-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-POLON-HTTPS
+
+loadbalance vip inservice
+
+
+
+loadbalance policy POLON-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class VIP-POLON-SSH
+
+loadbalance vip inservice
+
+loadbalance policy POLON-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-DYPLOMY-80
+
+loadbalance vip inservice
+
+loadbalance policy DEV-DYPLOMY-80
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-DYPLOMY-443
+
+loadbalance vip inservice
+
+loadbalance policy DEV-DYPLOMY-443
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class VIP-DEV-DYPLOMY-APP-22
+
+loadbalance vip inservice
+
+loadbalance policy DEV-DYPLOMY-APP-22
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-DYPLOMY-DB-22
+
+loadbalance vip inservice
+
+loadbalance policy DEV-DYPLOMY-DB-22
+
+loadbalance vip icmp-reply
+
+class VIP-DEVPOLON-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVPOLON-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVPOLON-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVPOLON-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class VIP-DEVPOLON-SSH
+
+loadbalance vip inservice
+
+loadbalance policy DEVPOLON-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-JSOSMONITOR-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy JSOSMONITOR-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-JSOSMONITOR-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy JSOSMONITOR-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class VIP-JSOSMONITOR-SSH
+
+loadbalance vip inservice
+
+loadbalance policy JSOSMONITOR-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-JSOSMONITOR-POSTGRESQL
+
+loadbalance vip inservice
+
+loadbalance policy JSOSMONITOR-POSTGRESQL
+
+loadbalance vip icmp-reply
+
+class VIP-SW160-POSTGRESQL
+
+loadbalance vip inservice
+
+loadbalance policy SW160-POSTGRESQL
+
+loadbalance vip icmp-reply
+
+class VIP-JSOSMONITOR-SERVER-AGENT
+
+loadbalance vip inservice
+
+loadbalance policy JSOSMONITOR-SERVER-AGENT
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-JSOS-HTTP
+
+
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-JSOS-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-JSOS-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-JSOS-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-SZKOL-OAUTH-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-OAUTH-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-SERVICE-GWIAZDKA-PWR-EDU-PL
+
+class VIP-SZKOL-JSOS-SSH
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-JSOS-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-ZSA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy ZSA-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-ZSA-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy ZSA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-ZSA-SSH
+
+loadbalance vip inservice
+
+loadbalance policy ZSA-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-OAS-160-SSH
+
+loadbalance vip inservice
+
+loadbalance policy OAS-160-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-DEVZSA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVZSA-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVZSA-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVZSA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DEVZSA-SSH
+
+loadbalance vip inservice
+
+loadbalance policy DEVZSA-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-DEVZSA-DB-1521
+
+loadbalance vip inservice
+
+loadbalance policy DEVZSA-DB-1521
+
+loadbalance vip icmp-reply
+
+class VIP-DEVANK-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEVANK-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DEVANK-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEVANK-HTTPS
+
+loadbalance vip icmp-reply
+
+
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DEVANK-SSH
+
+loadbalance vip inservice
+
+loadbalance policy DEVANK-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-ANKIETYZACJA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEV-ANKIETYZACJA-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-ANKIETYZACJA-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEV-ANKIETYZACJA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_wroc-homessl
+
+class VIP-DEV-API-PWR-SSH
+
+loadbalance vip inservice
+
+loadbalance policy DEV-API-PWR-SSH
+
+loadbalance vip icmp-reply
+
+class VIP-DEV-OAUTHCERT-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DEV-OAUTHCERT-HTTP
+
+loadbalance vip icmp-reply
+
+nat dynamic 990001 vlan 990
+
+class VIP-DEV-OAUTHCERT-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DEV-OAUTHCERT-HTTPS
+
+loadbalance vip icmp-reply
+
+nat dynamic 990001 vlan 990
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-SERVICE-CERTYFIKAT-GWIAZDKA-PWR-EDU-PL
+
+class VIP-TIVOLI-RTEMS-JSOS-65022
+
+loadbalance vip inservice
+
+loadbalance policy TIVOLI-RTEMS-JSOS-22
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-OAUTH-CERT-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-CERT-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-OAUTH-CERT-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-CERT-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-SERVICE-CERTYFIKAT-GWIAZDKA-PWR-EDU-PL
+
+class VIP-SZKOL-OAUTH-CERT-optional-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-CERT-optional-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-SZKOL-OAUTH-CERT-optional-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy SZKOL-OAUTH-CERT-optional-HTTPS
+
+loadbalance vip icmp-reply
+
+class VIP-ESB-8280
+
+loadbalance vip inservice
+
+loadbalance policy ESB-8280
+
+loadbalance vip icmp-reply
+
+class VIP-WSDL-80
+
+loadbalance vip inservice
+
+loadbalance policy WSDL-80
+
+loadbalance vip icmp-reply
+
+class VIP-DYPLOM-APP-ssh
+
+loadbalance vip inservice
+
+loadbalance policy DYPLOM-APP-22
+
+loadbalance vip icmp-reply
+
+class VIP-DYPLOM-DB-ssh
+
+
+
+loadbalance vip inservice
+
+loadbalance policy DYPLOM-DB-22
+
+loadbalance vip icmp-reply
+
+class VIP-DYPLOM-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy DYPLOM-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-DYPLOM-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy DYPLOM-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+class VIP-DB-edumod-1521
+
+loadbalance vip inservice
+
+loadbalance policy DB-edumod-1521
+
+loadbalance vip icmp-reply
+
+class VIP-DB-edutest-1521
+
+loadbalance vip inservice
+
+loadbalance policy DB-edutest-1521
+
+loadbalance vip icmp-reply
+
+class VIP-studiumtalent-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy STUDIUMTALENT-HTTP
+
+loadbalance vip icmp-reply
+
+class VIP-studiumtalent-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy STUDIUMTALENT-HTTPS
+
+loadbalance vip icmp-reply
+
+class VIP-NEW-ANKIETYZACJA-HTTP
+
+loadbalance vip inservice
+
+loadbalance policy NEW-ANKIETYZACJA-HTTP-REDIRECT
+
+loadbalance vip icmp-reply
+
+class VIP-NEW-ANKIETYZACJA-HTTPS
+
+loadbalance vip inservice
+
+loadbalance policy NEW-ANKIETYZACJA-HTTPS
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-SERVICE-GWIAZDKA-PWR-EDU-PL
+
+policy-map multi-match POLICY-NAT
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-SELS
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-EnterpriseManager
+
+nat dynamic 238 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan999
+
+nat dynamic 1 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan989
+
+nat dynamic 1 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan421
+
+nat dynamic 225 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan423
+
+nat dynamic 235 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan424
+
+nat dynamic 231 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-vlan425
+
+nat dynamic 237 vlan 222
+
+class CLASS-MAP-PRAWDZIWE-SERWERY-OAUTH2020-01
+
+nat dynamic 237 vlan 222
+
+class class-default
+
+nat dynamic 241 vlan 222
+
+policy-map multi-match POLICY-NAT-vlan990
+
+class NAT-DEV-OAUTHCERT-MERCURY
+
+nat dynamic 990001 vlan 990
+
+policy-map multi-match POLICY-NAT-vlan999
+
+class RAPORTY-01
+
+nat dynamic 3101 vlan 999
+
+class RAPORTY-02
+
+nat dynamic 3201 vlan 999
+
+
+
+class RAPORTY-03
+
+nat dynamic 3301 vlan 999
+
+class RAPORTY-04
+
+nat dynamic 3401 vlan 999
+
+class class-default
+
+nat dynamic 238 vlan 222
+
+policy-map multi-match SERVICE-POLICY-vlan-417
+
+class VIP-INSIDE-API-8080
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-API-8080
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-API-PWR-80
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-API-PWR-80
+
+loadbalance vip icmp-reply
+
+policy-map multi-match SERVICE-POLICY-vlan-421
+
+class VIP-MONITORING-OAUTH-8080
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+class VIP-MONITORING-OAUTH-80
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+class VIP-MONITORING-OAUTH-443
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+appl-parameter http advanced-options PARAMETER-MAP-HTTP
+
+ssl-proxy server SSL-gwiazdka_edu-homessl
+
+policy-map multi-match SERVICE-POLICY-vlan-422
+
+class VIP-INSIDE-ESB-8280
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-ESB-8280
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-OAUTH-8080
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+policy-map multi-match SERVICE-POLICY-vlan-424
+
+class VIP-INSIDE-DEV-DYPLOMY-ESB-8280
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-DEV-DYPLOMY-ESB-8280
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-DEV-DYPLOMY-WSDL-80
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-DEV-DYPLOMY-WSDL-80
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-DYPLOM-PROD-ESB-8280
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-DYPLOM-PROD-ESB-8280
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-DYPLOM-PROD-WSDL-80
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-DYPLOM-PROD-WSDL-80
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-DYPLOM-PROD-OAUTH-8080
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-DYPLOM-PROD-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+policy-map multi-match SERVICE-POLICY-vlan-999
+
+class VIP-INSIDE-RAPORTY-7777
+
+loadbalance vip inservice
+
+loadbalance policy INSIDE-RAPORTY-7777
+
+loadbalance vip icmp-reply
+
+class VIP-INSIDE-v0999-OAUTH-8080
+
+loadbalance vip inservice
+
+
+
+loadbalance policy INSIDE-OAUTH-8080
+
+loadbalance vip icmp-reply
+
+
+
+interface vlan 95
+
+description ZSI<JSOS
+
+ip address 10.150.95.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+no shutdown
+
+interface vlan 96
+
+description SELS<JSOS
+
+ip address 10.10.254.1 255.255.255.0
+
+access-group input ACL-INSIDE
+
+no shutdown
+
+interface vlan 222
+
+description OUTSIDE
+
+ip address 156.17.28.251 255.255.255.224
+
+ip verify reverse-path
+
+syn-cookie 2048
+
+access-group input ACL-OUTSIDE
+
+nat-pool 238 156.17.28.238 156.17.28.238 netmask 255.255.255.224 pat
+
+nat-pool 1 156.17.28.246 156.17.28.246 netmask 255.255.255.224 pat
+
+nat-pool 225 156.17.28.225 156.17.28.225 netmask 255.255.255.224 pat
+
+nat-pool 235 156.17.28.235 156.17.28.235 netmask 255.255.255.224 pat
+
+nat-pool 231 156.17.28.231 156.17.28.231 netmask 255.255.255.224 pat
+
+nat-pool 241 156.17.28.241 156.17.28.241 netmask 255.255.255.224 pat
+
+nat-pool 237 156.17.28.237 156.17.28.237 netmask 255.255.255.224 pat
+
+service-policy input JSOS-SSL-POLICY
+
+service-policy input DOSTEP-ADMINISTRACYJNY-OUTSIDE
+
+no shutdown
+
+interface vlan 417
+
+description esb
+
+ip address 10.10.9.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input SERVICE-POLICY-vlan-417
+
+no shutdown
+
+interface vlan 418
+
+description api
+
+ip address 10.10.8.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 419
+
+description oauth
+
+ip address 10.10.7.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 420
+
+description bi-inside
+
+ip address 10.10.6.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 421
+
+description ZARZAD-JSOS
+
+ip address 10.10.0.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input SERVICE-POLICY-vlan-421
+
+no shutdown
+
+interface vlan 422
+
+
+
+description portaliki-jsos
+
+ip address 10.10.5.254 255.255.255.0
+
+access-group input ACL-indeks-v422-in
+
+service-policy input POLICY-NAT
+
+service-policy input SERVICE-POLICY-vlan-422
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 423
+
+description api-deweloperka
+
+ip address 10.10.4.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 424
+
+description dyplomy-nowe
+
+ip address 10.10.21.254 255.255.255.0
+
+access-group input ACL-v424-in
+
+service-policy input POLICY-NAT
+
+service-policy input SERVICE-POLICY-vlan-424
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 425
+
+description api-szkol
+
+ip address 10.10.3.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 426
+
+description raporty-01
+
+ip address 10.10.31.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input POLICY-NAT-vlan999
+
+no shutdown
+
+interface vlan 427
+
+description raporty-02
+
+ip address 10.10.32.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input POLICY-NAT-vlan999
+
+no shutdown
+
+interface vlan 428
+
+description raporty-03
+
+ip address 10.10.33.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input POLICY-NAT-vlan999
+
+no shutdown
+
+interface vlan 429
+
+description raporty-04
+
+ip address 10.10.34.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input POLICY-NAT-vlan999
+
+no shutdown
+
+interface vlan 989
+
+description INSIDE-IKZ
+
+ip address 10.10.11.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 990
+
+description pix-ace
+
+ip address 10.10.255.254 255.255.255.0
+
+
+
+access-group input ACL-INSIDE
+
+nat-pool 990001 192.168.79.8 192.168.79.8 netmask 255.255.255.255 pat
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+no shutdown
+
+interface vlan 999
+
+description INSIDE
+
+ip address 10.10.10.254 255.255.255.0
+
+access-group input ACL-INSIDE
+
+nat-pool 3101 10.10.10.151 10.10.10.151 netmask 255.255.255.255 pat
+
+nat-pool 3201 10.10.10.152 10.10.10.152 netmask 255.255.255.255 pat
+
+nat-pool 3301 10.10.10.153 10.10.10.153 netmask 255.255.255.255 pat
+
+nat-pool 3401 10.10.10.154 10.10.10.154 netmask 255.255.255.255 pat
+
+service-policy input POLICY-NAT
+
+service-policy input DOSTEP-ADMINISTRACYJNY-INSIDE
+
+service-policy input SERVICE-POLICY-vlan-999
+
+no shutdown
+
+
+
+ip route 0.0.0.0 0.0.0.0 156.17.28.254
+
+ip route 10.60.2.0 255.255.255.0 10.10.255.1
+
+ip route 10.60.4.0 255.255.255.0 10.10.255.1
+
+ip route 192.168.80.8 255.255.255.255 10.10.255.1
+
+ip route 192.168.80.90 255.255.255.255 10.10.255.1
+
+ip route 10.150.2.0 255.255.255.0 10.150.95.1
+
+ip route 10.122.0.0 255.255.255.0 10.10.254.2
+
+
+
+snmp-server contact "Tomek"
+
+snmp-server unmask-community
+
+snmp-server community disnmpnms group Network-Monitor
+
+
+
+snmp-server host 10.10.0.100 traps version 2c disnmpnms
+
+
+
+snmp-server host 156.17.28.226 traps version 2c disnmpnms
+
+
+
+snmp-server trap-source vlan 421
+
+
+
+snmp-server enable traps slb serverfarm
+
+snmp-server enable traps slb vserver
+
+snmp-server enable traps slb real
+
+snmp-server enable traps snmp authentication
+
+snmp-server enable traps snmp linkup
+
+snmp-server enable traps snmp linkdown
+
+snmp-server trap link ietf
+
+username tomek password 5 $1$hjlzUwYk$l4FRYY1hlEX2cg39apAW.1 role Admin domain default-domain
+
+username tomfin password 5 $1$hen85RZ9$iBlqdQ04FpWfF88louS/u1 role Admin domain default-domain
